@@ -1,0 +1,448 @@
+
+/* ===== Founder Page — Av_eSAFE Training Theme ===== */
+
+.founder-page {
+  --founder-green: #07865f;
+  --founder-green-dark: #066d50;
+  --founder-ink: #192d28;
+  --founder-muted: #71847d;
+  --founder-border: #e3eee8;
+  --founder-mint: #e8f8f1;
+
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--founder-ink);
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(218, 248, 234, 0.55),
+      transparent 28%
+    ),
+    #fff;
+  font-family: inherit;
+}
+
+.founder-page *,
+.founder-page *::before,
+.founder-page *::after {
+  box-sizing: border-box;
+}
+
+.founder-nav {
+  width: 100%;
+  min-height: 84px;
+  padding: 18px max(24px, calc((100% - 1240px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--founder-border);
+}
+
+.founder-brand {
+  color: var(--founder-ink);
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  text-decoration: none;
+}
+
+.founder-brand span {
+  color: var(--founder-green);
+}
+
+.founder-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #63766e;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.founder-back:hover {
+  color: var(--founder-green);
+}
+
+.founder-hero {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 76px 24px 100px;
+}
+
+.founder-eyebrow {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  margin-bottom: 44px;
+  border: 1px solid #d6eee1;
+  border-radius: 40px;
+  background: #f1fbf6;
+  color: var(--founder-green);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.founder-eyebrow span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #12a875;
+  box-shadow: 0 0 0 4px #d9f4e7;
+}
+
+.founder-content {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: clamp(40px, 7vw, 90px);
+}
+
+.founder-photo-placeholder {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border: 1px solid #dcefe5;
+  border-radius: 30px;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 255, 255, 0.96),
+      transparent 42%
+    ),
+    linear-gradient(145deg, #e5f8ef, #f5fbf8 60%, #dff3e9);
+  color: var(--founder-green);
+}
+
+.founder-photo-placeholder::before,
+.founder-photo-placeholder::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(7, 134, 95, 0.12);
+  border-radius: 50%;
+}
+
+.founder-photo-placeholder::after {
+  width: 220px;
+  height: 220px;
+}
+
+.founder-photo-placeholder > svg,
+.founder-photo-placeholder > span {
+  position: relative;
+  z-index: 1;
+}
+
+.founder-photo-placeholder > span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.founder-intro {
+  min-width: 0;
+}
+
+.founder-kicker {
+  margin: 0 0 17px;
+  color: var(--founder-green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.founder-intro h1 {
+  margin: 0 0 22px;
+  color: var(--founder-ink);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -2.8px;
+}
+
+.founder-intro h1 span {
+  display: block;
+  color: var(--founder-green);
+}
+
+.founder-intro h2 {
+  margin: 0 0 22px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.founder-intro p:not(.founder-kicker) {
+  margin: 0 0 15px;
+  color: var(--founder-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.founder-cta {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px 23px;
+  border: 1px solid var(--founder-green);
+  border-radius: 10px;
+  background: var(--founder-green);
+  box-shadow: 0 7px 18px rgba(7, 134, 95, 0.13);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.founder-cta:hover {
+  transform: translateY(-2px);
+  background: var(--founder-green-dark);
+  box-shadow: 0 10px 22px rgba(7, 134, 95, 0.18);
+}
+
+.founder-mission {
+  padding: 88px 24px 96px;
+  border-top: 1px solid #edf3ef;
+  border-bottom: 1px solid #edf3ef;
+  background: #f8fcfa;
+}
+
+.founder-section-heading {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.founder-section-heading > span {
+  color: var(--founder-green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.founder-section-heading h2 {
+  margin: 17px 0 14px;
+  color: var(--founder-ink);
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 750;
+  letter-spacing: -1.7px;
+}
+
+.founder-section-heading p {
+  margin: 0;
+  color: var(--founder-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.founder-values {
+  max-width: 1120px;
+  margin: 46px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.founder-values article {
+  padding: 30px;
+  border: 1px solid #e4eee8;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(30, 75, 54, 0.035);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.founder-values article:hover {
+  transform: translateY(-4px);
+  border-color: #c8e8d8;
+  box-shadow: 0 14px 34px rgba(30, 75, 54, 0.07);
+}
+
+.founder-values article > svg {
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border-radius: 13px;
+  background: var(--founder-mint);
+  color: var(--founder-green);
+}
+
+.founder-values h3 {
+  margin: 20px 0 10px;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.founder-values p {
+  margin: 0;
+  color: var(--founder-muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.founder-bottom {
+  padding: 82px 24px 88px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(216, 246, 231, 0.8),
+      transparent 65%
+    ),
+    #f0faf5;
+  text-align: center;
+}
+
+.founder-bottom h2 {
+  margin: 0 0 14px;
+  color: var(--founder-ink);
+  font-size: clamp(30px, 4vw, 43px);
+  font-weight: 750;
+  letter-spacing: -1.6px;
+}
+
+.founder-bottom p {
+  margin: 0 auto;
+  max-width: 600px;
+  color: var(--founder-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.founder-footer {
+  padding: 25px 20px;
+  border-top: 1px solid var(--founder-border);
+  background: #fff;
+  color: #819088;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .founder-hero {
+    padding-top: 55px;
+  }
+
+  .founder-content {
+    gap: 38px;
+  }
+
+  .founder-photo-placeholder {
+    min-height: 360px;
+  }
+
+  .founder-intro h1 {
+    font-size: clamp(38px, 5.5vw, 52px);
+    letter-spacing: -2px;
+  }
+
+  .founder-values {
+    gap: 15px;
+  }
+
+  .founder-values article {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 680px) {
+  .founder-nav {
+    min-height: 72px;
+    padding: 16px 20px;
+  }
+
+  .founder-brand {
+    font-size: 22px;
+  }
+
+  .founder-hero {
+    padding: 42px 20px 65px;
+  }
+
+  .founder-eyebrow {
+    margin-bottom: 30px;
+    font-size: 10px;
+  }
+
+  .founder-content {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .founder-photo-placeholder {
+    min-height: 280px;
+    border-radius: 22px;
+  }
+
+  .founder-intro h1 {
+    font-size: clamp(39px, 10vw, 54px);
+    letter-spacing: -1.8px;
+  }
+
+  .founder-intro p:not(.founder-kicker) {
+    font-size: 14px;
+  }
+
+  .founder-mission {
+    padding: 65px 20px;
+  }
+
+  .founder-values {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .founder-values article {
+    padding: 25px;
+  }
+
+  .founder-bottom {
+    padding: 65px 20px;
+  }
+
+  .founder-bottom h2 {
+    letter-spacing: -1px;
+  }
+}
+
+@media (max-width: 380px) {
+  .founder-nav {
+    padding-inline: 15px;
+  }
+
+  .founder-brand {
+    font-size: 19px;
+  }
+
+  .founder-back {
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  .founder-hero {
+    padding-inline: 16px;
+  }
+}
