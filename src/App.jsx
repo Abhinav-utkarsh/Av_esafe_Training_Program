@@ -1,3 +1,4 @@
+
 import {
   ArrowDown,
   ArrowRight,
@@ -8,21 +9,22 @@ import {
   ChevronDown,
   Code2,
   GraduationCap,
-  Menu,
   MessageCircle,
   Sparkles,
   Target,
   Users,
-  X,
   Zap,
 } from "lucide-react";
+
 import { useEffect, useState } from "react";
 import "./App.css";
+
 import TrainingTracks from "./components/TrainingTracks";
 import ProjectShowcase from "./components/ProjectShowcase";
 import StudentBenefits from "./components/StudentBenefits";
-import Select from "react-select";
-import { City } from "country-state-city";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 import {
   BrowserRouter,
   Routes,
@@ -32,7 +34,7 @@ import {
 
 import Founder from "./pages/Founder";
 import About from "./pages/About";
-import Navbar from "./components/Navbar";
+
 
 
 
@@ -1178,67 +1180,11 @@ function ApplySection() {
 }
 
 
-function Footer() {
-  return (
-    <footer className="site-footer" id="contact">
-      <div className="container">
-        <div className="footer-main">
-          <div className="footer-brand-column">
-            <Brand footer />
-            <p>
-              Practical technology training and career preparation
-              designed to help aspiring professionals grow with
-              confidence.
-            </p>
-          </div>
-
-          <div className="footer-links-column">
-            <h3>Explore</h3>
-            <a href="#about">About the program</a>
-            <a href="#program">What you'll learn</a>
-            <a href="#process">Your learning journey</a>
-            <a href="#pricing">Program fee</a>
-          </div>
-
-          <div className="footer-links-column">
-            <h3>Get started</h3>
-            <a href="#faq">Frequently asked questions</a>
-            <a href="#apply">Register your interest</a>
-            <a href="mailto:info@avesafe.com">
-              Email Av_eSAFE
-            </a>
-          </div>
-
-          <div className="footer-note-column">
-            <span className="footer-status">
-              <span /> BUILT FOR YOUR NEXT STEP
-            </span>
-            <p>
-              Learn practical skills. Build meaningful projects.
-              Prepare for new opportunities.
-            </p>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p>
-            © {new Date().getFullYear()} Av_eSAFE Technology Solutions.
-            All rights reserved.
-          </p>
-          <a href="#home">
-            Back to top <ArrowUpRight size={15} />
-          </a>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-
 function LandingPage() {
   return (
     <>
       <Navbar />
+
       <main>
         <Hero />
         <ProgramHighlights />
@@ -1251,10 +1197,10 @@ function LandingPage() {
         <FAQSection />
         <ApplySection />
       </main>
-      <Footer />
     </>
   );
 }
+
 function ScrollToSection() {
   const { pathname, hash } = useLocation();
 
@@ -1286,16 +1232,46 @@ function ScrollToSection() {
   return null;
 }
 
+
 function App() {
   return (
     <BrowserRouter>
       <ScrollToSection />
+
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/founder" element={<Founder />} />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/"
+          element={<LandingPage />}
+        />
+
+        <Route
+          path="/founder"
+          element={<Founder />}
+        />
+
+        <Route
+          path="/about"
+          element={<About />}
+        />
+
+        <Route
+          path="*"
+          element={<NotFound />}
+        />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
+  );
+}
+
+function NotFound() {
+  return (
+    <main className="container" style={{ padding: "100px 24px" }}>
+      <h1>Page not found</h1>
+      <p>The page you're looking for doesn't exist.</p>
+      <a href="/">Return to Home</a>
+    </main>
   );
 }
 

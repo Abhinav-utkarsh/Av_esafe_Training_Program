@@ -1,26 +1,42 @@
-
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+/* ==========================================
+   Av_eSAFE — Global Design System
+   Navy | Blue | Teal | Clean Light UI
+========================================== */
 
 :root {
   font-family: "DM Sans", sans-serif;
-  color: #172b27;
-  background: #ffffff;
+  color: #334155;
+  background: #F4F7FB;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --color-primary: #087f5b;
-  --color-primary-dark: #075c45;
-  --color-teal: #18a78a;
-  --color-ink: #172b27;
-  --color-muted: #687b75;
-  --color-border: #e5ece8;
-  --color-soft: #f5f9f6;
-  --color-white: #ffffff;
+  /* Brand palette */
+  --color-primary: #142B4A;
+  --color-primary-dark: #0D1F38;
+  --color-accent: #3478F6;
+  --color-accent-dark: #2563D9;
+  --color-teal: #14B8A6;
+
+  /* Text palette */
+  --color-ink: #142B4A;
+  --color-text: #334155;
+  --color-muted: #64748B;
+
+  /* Surface palette */
+  --color-background: #F4F7FB;
+  --color-soft: #EDF3FA;
+  --color-surface: #FFFFFF;
+  --color-white: #FFFFFF;
+  --color-border: #DCE5EF;
+
+  /* Accessibility */
+  --color-focus: rgba(52, 120, 246, 0.55);
 
   --font-heading: "Manrope", sans-serif;
-
   --container-width: 1160px;
   --section-space: 104px;
 }
@@ -38,6 +54,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
 }
 
 body,
@@ -79,13 +97,13 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 3px solid rgba(24, 167, 138, 0.55);
+  outline: 3px solid var(--color-focus);
   outline-offset: 4px;
 }
 
 ::selection {
-  color: #ffffff;
-  background: #087f5b;
+  color: #FFFFFF;
+  background: var(--color-accent);
 }
 
 @media (max-width: 768px) {
@@ -104,16 +122,17 @@ select:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
-/* Hide scrollbar but keep scrolling enabled */
+
+/* Hide scrollbar while preserving scroll behaviour */
 html {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 #root::-webkit-scrollbar {
-  display: none; /* Chrome, Edge, Safari */
+  display: none;
 }
 
 html,

@@ -1,15 +1,29 @@
+/* ==========================================
+   Av_eSAFE — About Page
+   Modern Blue–Violet Theme
+========================================== */
 
 .about-page {
+  --about-primary: #4f46e5;
+  --about-primary-dark: #3730a3;
+  --about-accent: #7c3aed;
+  --about-ink: #172033;
+  --about-muted: #64748b;
+  --about-border: #e2e8f0;
+  --about-soft: #f5f7ff;
+
   min-height: 100vh;
-  color: #173b31;
-  background: #f7fbf8;
+  color: var(--about-ink);
+  background: #f8faff;
 }
 
+/* Hero */
+
 .about-hero {
-  padding: 100px 24px 90px;
-  text-align: center;
   max-width: 950px;
   margin: 0 auto;
+  padding: 100px 24px 90px;
+  text-align: center;
 }
 
 .about-eyebrow {
@@ -17,140 +31,187 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: #087f5b;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
   margin-bottom: 28px;
+  color: var(--about-primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
 }
 
 .about-eyebrow span {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #087f5b;
+  background: var(--about-accent);
+  box-shadow: 0 0 0 5px rgba(124, 58, 237, 0.10);
 }
 
 .about-hero h1 {
+  margin: 0 auto 24px;
   font-size: clamp(38px, 6vw, 68px);
+  font-weight: 800;
   line-height: 1.12;
   letter-spacing: -2px;
-  margin: 0 auto 24px;
 }
 
 .about-hero h1 span {
   display: block;
-  color: #087f5b;
+  color: var(--about-primary);
+  background: linear-gradient(110deg, #4f46e5, #7c3aed);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .about-hero > p {
   max-width: 660px;
   margin: 0 auto 30px;
-  color: #61736b;
+  color: var(--about-muted);
   font-size: 17px;
   line-height: 1.8;
 }
+
+/* Primary CTA */
 
 .about-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 22px;
-  border-radius: 10px;
-  background: #087f5b;
-  color: #fff;
+  padding: 14px 23px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  box-shadow: 0 8px 22px rgba(79, 70, 229, 0.20);
+  color: #ffffff;
+  font-weight: 700;
   text-decoration: none;
-  font-weight: 600;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .about-cta:hover {
-  background: #066849;
+  background: linear-gradient(135deg, #4338ca, #5b21b6);
+  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.28);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
+/* Mission section */
+
 .about-mission {
   padding: 75px 24px 90px;
-  background: #fff;
+  border-top: 1px solid #edf0f8;
+  background: #ffffff;
 }
 
 .about-section-heading {
   max-width: 740px;
-  text-align: center;
   margin: 0 auto 50px;
+  text-align: center;
 }
 
 .about-section-heading > span {
-  color: #087f5b;
+  color: var(--about-primary);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 2px;
 }
 
 .about-section-heading h2 {
-  font-size: clamp(28px, 4vw, 42px);
-  line-height: 1.2;
   margin: 16px 0;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
   letter-spacing: -1px;
 }
 
 .about-section-heading > p {
-  color: #61736b;
+  color: var(--about-muted);
   font-size: 16px;
   line-height: 1.8;
 }
 
+/* Values cards */
+
 .about-values {
-  max-width: 1100px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .about-values article {
   padding: 28px 24px;
-  border: 1px solid #e2eee6;
+  border: 1px solid var(--about-border);
   border-radius: 18px;
-  background: #f8fcf9;
+  background: linear-gradient(145deg, #ffffff, #fafaff);
+  box-shadow: 0 5px 20px rgba(31, 41, 85, 0.035);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.about-values article:hover {
+  transform: translateY(-5px);
+  border-color: #c7d2fe;
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.09);
 }
 
 .about-values article svg {
-  color: #087f5b;
   margin-bottom: 18px;
+  color: var(--about-primary);
 }
 
 .about-values h3 {
-  font-size: 18px;
   margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.45;
 }
 
 .about-values article p {
-  color: #61736b;
-  line-height: 1.7;
-  font-size: 14px;
   margin: 0;
+  color: var(--about-muted);
+  font-size: 14px;
+  line-height: 1.7;
 }
+
+/* Bottom CTA section */
 
 .about-bottom {
   padding: 85px 24px;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(124, 58, 237, 0.09),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
   text-align: center;
-  background: #eaf6ee;
 }
 
 .about-bottom h2 {
-  font-size: clamp(28px, 4vw, 42px);
-  margin: 0 auto 16px;
   max-width: 700px;
+  margin: 0 auto 16px;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1px;
 }
 
 .about-bottom p {
-  color: #61736b;
-  line-height: 1.8;
-  margin: 0 auto 26px;
   max-width: 600px;
+  margin: 0 auto 26px;
+  color: var(--about-muted);
+  line-height: 1.8;
 }
+
+/* Tablet */
 
 @media (max-width: 900px) {
   .about-values {
@@ -158,17 +219,32 @@
   }
 }
 
+/* Mobile */
+
 @media (max-width: 560px) {
   .about-hero {
     padding: 75px 20px;
+  }
+
+  .about-hero h1 {
+    letter-spacing: -1.3px;
+  }
+
+  .about-hero > p {
+    font-size: 15px;
   }
 
   .about-mission {
     padding: 60px 20px;
   }
 
+  .about-section-heading {
+    margin-bottom: 35px;
+  }
+
   .about-values {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
   }
 
   .about-values article {
@@ -177,5 +253,19 @@
 
   .about-bottom {
     padding: 65px 20px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-values article,
+  .about-cta {
+    transition: none;
+  }
+
+  .about-values article:hover,
+  .about-cta:hover {
+    transform: none;
   }
 }

@@ -1,13 +1,31 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const links = [
+    { label: "Home", to: "/" },
     { label: "About Us", to: "/about" },
     { label: "Program", to: "/#tracks" },
     { label: "How it works", to: "/#process" },
@@ -17,32 +35,35 @@ export default function Navbar() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="site-header">
+    <header
+      className={`site-header${isScrolled ? " is-scrolled" : ""}`}
+    >
       <div className="container header-inner">
-        
-<Link
-  to="/"
-  className="brand"
-  aria-label="Av_eSAFE home"
-  onClick={closeMenu}
->
-  <span className="brand-content">
-    <img
-      src="/logo.png"
-      alt="Av_eSAFE"
-      className="brand-logo"
-    />
-    <span className="brand-tagline">
-      Classroom to Career-Ready
-    </span>
-  </span>
-</Link>
+        <Link
+          to="/"
+          className="brand"
+          aria-label="Av_eSAFE home"
+          onClick={closeMenu}
+        >
+          <span className="brand-content">
+            <img
+              src="/logo.png"
+              alt="Av_eSAFE"
+              className="brand-logo"
+            />
 
+            <span className="brand-tagline">
+              Classroom to Career-Ready
+            </span>
+          </span>
+        </Link>
 
         <button
           className="mobile-menu-toggle"
           type="button"
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-label={
+            menuOpen ? "Close navigation" : "Open navigation"
+          }
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >

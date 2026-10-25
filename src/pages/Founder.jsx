@@ -1,167 +1,153 @@
-
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   GraduationCap,
   Lightbulb,
   Target,
-  X,
-  Menu,
-  ArrowUpRight,
+  UserRound,
 } from "lucide-react";
-import { useState } from "react";
+
+import Navbar from "../components/Navbar";
 import "./Founder.css";
 
-// Header must be outside the Founder component
-function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const links = [
-  ];
-
+export default function Founder() {
   return (
-    <header className="site-header">
-      <div className="container header-inner">
-        <a className="brand" href="/" aria-label="Av_eSAFE home">
-          <span>Abhinav Utkarsh</span>
-        </a>
+    <div className="founder-page">
+      {/* Shared website navbar */}
+      <Navbar />
 
-        <button
-          className="mobile-menu-toggle"
-          type="button"
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+      {/* Founder Hero Section */}
+      <main>
+        <section className="founder-hero">
+          <div className="founder-eyebrow">
+            <span />
+            THE PERSON BEHIND AV_eSAFE
+          </div>
 
-        <nav
-          className={`main-nav${menuOpen ? " main-nav-open" : ""}`}
-          aria-label="Main navigation"
-        >
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
+          <div className="founder-content">
+            {/* Founder Photo Placeholder */}
+            <div
+              className="founder-photo-placeholder"
+              aria-label="Founder photo placeholder"
             >
-              {link.label}
-            </a>
-          ))}
+              <UserRound size={76} strokeWidth={1.2} />
+              <span>FOUNDER & DEVELOPER</span>
+            </div>
 
-          <a
-            className="button button-primary nav-cta"
-            href="/#apply"
-            onClick={() => setMenuOpen(false)}
-          >
-            Back <ArrowUpRight size={16} />
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
-}
+            {/* Founder Introduction */}
+            <div className="founder-intro">
+              <p className="founder-kicker">MEET THE FOUNDER</p>
 
-function Founder() {
-  return (
-    <main className="founder-page">
-      <Header />
+              <h1>
+                Building technology.
+                <span>Empowering people.</span>
+              </h1>
 
-      <section className="founder-hero">
-        <div className="founder-eyebrow">
-          <span /> THE PERSON BEHIND AV_eSAFE
-        </div>
+              <h2>
+                The vision behind Av_eSAFE Training
+              </h2>
 
-        <div className="founder-content">
-          <div className="founder-photo-placeholder">
-            <GraduationCap size={64} strokeWidth={1.3} />
-            <span>FOUNDER PORTRAIT</span>
+              <p>
+                Av_eSAFE was created with a simple vision: make technology
+                education practical, accessible, and career-focused. Learning
+                should go beyond theory and help students develop the skills
+                and confidence needed to build real-world solutions.
+              </p>
+
+              <p>
+                Through Av_eSAFE Training, the goal is to bridge the gap
+                between classroom learning and industry expectations with
+                structured learning paths, hands-on practice, and project-based
+                experiences.
+              </p>
+
+              <p>
+                The journey is driven by curiosity, continuous learning, and
+                the belief that the right guidance and practical exposure can
+                help learners take their next step in technology.
+              </p>
+
+              <Link to="/#tracks" className="founder-cta">
+                Explore Our Programs
+                <ArrowRight size={18} />
+              </Link>
+            </div>
           </div>
+        </section>
 
-          <div className="founder-intro">
-            <p className="founder-kicker">MEET OUR FOUNDER</p>
+        {/* Mission Section */}
+        <section className="founder-mission">
+          <div className="founder-section-heading">
+            <span>OUR PURPOSE</span>
 
-            <h1>
-              Turning ideas into
-              <span> meaningful impact.</span>
-            </h1>
-
-            <h2>Founder &amp; Technology Enthusiast</h2>
+            <h2>Learning that leads to real opportunities</h2>
 
             <p>
-              Hello! I'm the founder of Av_eSAFE Technology Solutions.
-              I believe technology and practical learning can open doors
-              to new opportunities for students and aspiring professionals.
+              We want to make technology education more engaging, practical,
+              and relevant to the skills learners need to grow.
             </p>
-
-            <p>
-              Av_eSAFE was created with a vision to make technology
-              education more practical, accessible, and connected to
-              real-world challenges.
-            </p>
-
-            <a href="#founder-mission" className="founder-cta">
-              Discover my vision <ArrowRight size={17} />
-            </a>
           </div>
-        </div>
-      </section>
 
-      <section className="founder-mission" id="founder-mission">
-        <div className="founder-section-heading">
-          <span>THE VISION</span>
-          <h2>Why I started Av_eSAFE</h2>
+          <div className="founder-values">
+            <article>
+              <GraduationCap size={28} />
+
+              <h3>Practical Learning</h3>
+
+              <p>
+                Learn core concepts through hands-on exercises, coding
+                practice, and real-world projects instead of theory alone.
+              </p>
+            </article>
+
+            <article>
+              <Lightbulb size={28} />
+
+              <h3>Innovation First</h3>
+
+              <p>
+                Explore modern technologies, experiment with ideas, and
+                develop the problem-solving mindset needed in a changing
+                technology landscape.
+              </p>
+            </article>
+
+            <article>
+              <Target size={28} />
+
+              <h3>Career Readiness</h3>
+
+              <p>
+                Build confidence through structured learning, assessments,
+                and practical skills that support your journey toward a
+                technology career.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <section className="founder-bottom">
+          <h2>Your journey into technology starts here.</h2>
+
           <p>
-            Demo content — this section will be updated with the
-            founder's real story and motivations.
+            Explore our learning programs, strengthen your foundations, and
+            take the next step toward becoming career-ready.
           </p>
-        </div>
 
-        <div className="founder-values">
-          <article>
-            <Lightbulb size={28} />
-            <h3>Innovation</h3>
-            <p>
-              Exploring useful technology and turning ideas into
-              practical solutions.
-            </p>
-          </article>
+          <Link to="/#tracks" className="founder-cta">
+            Start Learning
+            <ArrowRight size={18} />
+          </Link>
+        </section>
+      </main>
 
-          <article>
-            <GraduationCap size={28} />
-            <h3>Education</h3>
-            <p>
-              Helping learners develop skills through hands-on
-              projects and guided learning.
-            </p>
-          </article>
-
-          <article>
-            <Target size={28} />
-            <h3>Purpose</h3>
-            <p>
-              Building meaningful digital experiences that address
-              real needs and challenges.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section className="founder-bottom">
-        <h2>Let's build something meaningful.</h2>
-        <p>
-          Explore the Av_eSAFE Training program and take your next step.
-        </p>
-        <a href="/#apply" className="founder-cta">
-          Explore the program <ArrowRight size={17} />
-        </a>
-      </section>
-
+      {/* Footer */}
       <footer className="founder-footer">
-        © {new Date().getFullYear()} Av_eSAFE Technology Solutions
+        <p>
+          © {new Date().getFullYear()} Av_eSAFE Training. All rights reserved.
+        </p>
       </footer>
-    </main>
+    </div>
   );
 }
-
-export default Founder;

@@ -1,10 +1,16 @@
+/* ==========================================
+   Av_eSAFE — Student Benefits
+   Navy + Blue + Teal Theme
+========================================== */
 
 .student-benefits {
-  --benefits-green: #07845f;
-  --benefits-green-dark: #075d49;
-  --benefits-ink: #172c27;
-  --benefits-muted: #71827c;
-  --benefits-border: #e2ece6;
+  --benefits-navy: #142b4a;
+  --benefits-blue: #3478f6;
+  --benefits-teal: #14b8a6;
+  --benefits-ink: #142b4a;
+  --benefits-muted: #64748b;
+  --benefits-border: #e2e8f0;
+  --benefits-soft: #f4f7fb;
 
   padding: 100px 24px;
   background: #ffffff;
@@ -17,12 +23,14 @@
   margin: 0 auto;
 }
 
+/* Section eyebrow */
+
 .student-benefits__eyebrow {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 19px;
-  color: var(--benefits-green);
+  color: var(--benefits-blue);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
@@ -33,9 +41,11 @@
   height: 9px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: #11a979;
-  box-shadow: 0 0 0 5px #e7f7ef;
+  background: var(--benefits-teal);
+  box-shadow: 0 0 0 5px rgba(20, 184, 166, 0.12);
 }
+
+/* Section heading */
 
 .student-benefits__heading {
   display: flex;
@@ -51,7 +61,7 @@
 
 .student-benefits__heading h2 {
   margin: 0;
-  color: var(--benefits-ink);
+  color: var(--benefits-navy);
   font-size: clamp(32px, 4vw, 46px);
   font-weight: 750;
   line-height: 1.2;
@@ -59,7 +69,7 @@
 }
 
 .student-benefits__heading h2 span {
-  color: var(--benefits-green);
+  color: var(--benefits-blue);
 }
 
 .student-benefits__heading p {
@@ -70,6 +80,8 @@
   line-height: 1.9;
 }
 
+/* Top link */
+
 .student-benefits__top-link {
   display: inline-flex;
   align-items: center;
@@ -77,22 +89,26 @@
   gap: 8px;
   flex-shrink: 0;
   padding: 13px 17px;
-  border: 1px solid #dceee3;
+  border: 1px solid #dbe5f4;
   border-radius: 10px;
-  background: #f5faf7;
-  color: var(--benefits-green-dark);
+  background: var(--benefits-soft);
+  color: var(--benefits-navy);
   font-size: 12px;
   font-weight: 750;
   text-decoration: none;
   transition:
     background 200ms ease,
-    border-color 200ms ease;
+    border-color 200ms ease,
+    color 200ms ease;
 }
 
 .student-benefits__top-link:hover {
-  border-color: #a7d8c1;
-  background: #eaf7ef;
+  border-color: rgba(52, 120, 246, 0.4);
+  background: #eaf1ff;
+  color: var(--benefits-blue);
 }
+
+/* Benefits grid */
 
 .student-benefits__grid {
   display: grid;
@@ -100,13 +116,15 @@
   gap: 20px;
 }
 
+/* Benefit cards */
+
 .student-benefit-card {
   min-width: 0;
   padding: 25px 24px 23px;
   border: 1px solid var(--benefits-border);
   border-radius: 18px;
   background: #fff;
-  box-shadow: 0 5px 20px rgba(19, 65, 46, 0.025);
+  box-shadow: 0 5px 20px rgba(20, 43, 74, 0.035);
   transition:
     transform 220ms ease,
     border-color 220ms ease,
@@ -115,9 +133,11 @@
 
 .student-benefit-card:hover {
   transform: translateY(-4px);
-  border-color: #addcc5;
-  box-shadow: 0 15px 35px rgba(19, 65, 46, 0.07);
+  border-color: rgba(52, 120, 246, 0.4);
+  box-shadow: 0 15px 35px rgba(20, 43, 74, 0.08);
 }
+
+/* Card top row */
 
 .student-benefit-card__top {
   display: flex;
@@ -131,26 +151,30 @@
   width: 49px;
   height: 49px;
   place-items: center;
-  border: 1px solid #d9eee2;
+  border: 1px solid #dbe7ff;
   border-radius: 14px;
-  background: #edf8f1;
-  color: var(--benefits-green);
+  background: #edf3ff;
+  color: var(--benefits-blue);
   transition:
     background 200ms ease,
-    color 200ms ease;
+    color 200ms ease,
+    border-color 200ms ease;
 }
 
 .student-benefit-card:hover .student-benefit-card__icon {
-  background: var(--benefits-green);
+  border-color: var(--benefits-blue);
+  background: var(--benefits-blue);
   color: #fff;
 }
 
 .student-benefit-card__top > span {
-  color: #a6b9af;
+  color: #94a3b8;
   font-size: 12px;
   font-weight: 750;
   letter-spacing: 1px;
 }
+
+/* Card content */
 
 .student-benefit-card h3 {
   margin: 0 0 11px;
@@ -169,6 +193,8 @@
   line-height: 1.9;
 }
 
+/* Benefit tags */
+
 .student-benefit-card__tags {
   display: flex;
   flex-wrap: wrap;
@@ -182,10 +208,10 @@
   gap: 6px;
   max-width: 100%;
   padding: 7px 9px;
-  border: 1px solid #e4eee7;
+  border: 1px solid #e2e8f0;
   border-radius: 7px;
-  background: #f7faf8;
-  color: #52675d;
+  background: var(--benefits-soft);
+  color: #475569;
   font-size: 10px;
   font-weight: 650;
   line-height: 1.5;
@@ -193,8 +219,10 @@
 
 .student-benefit-card__tags svg {
   flex-shrink: 0;
-  color: var(--benefits-green);
+  color: var(--benefits-teal);
 }
+
+/* Bottom note */
 
 .student-benefits__note {
   display: flex;
@@ -202,9 +230,9 @@
   gap: 17px;
   margin-top: 30px;
   padding: 23px 25px;
-  border: 1px solid #dceee3;
+  border: 1px solid #dbe5f4;
   border-radius: 16px;
-  background: #f5faf7;
+  background: var(--benefits-soft);
 }
 
 .student-benefits__note-icon {
@@ -213,9 +241,10 @@
   height: 47px;
   flex-shrink: 0;
   place-items: center;
+  border: 1px solid #dbe7ff;
   border-radius: 13px;
-  background: #e3f5e9;
-  color: var(--benefits-green);
+  background: #eaf1ff;
+  color: var(--benefits-blue);
 }
 
 .student-benefits__note > div:nth-child(2) {
@@ -244,15 +273,18 @@
   justify-content: center;
   gap: 8px;
   flex-shrink: 0;
-  color: var(--benefits-green);
+  color: var(--benefits-blue);
   font-size: 12px;
   font-weight: 750;
   text-decoration: none;
+  transition: color 200ms ease;
 }
 
 .student-benefits__note > a:hover {
-  color: var(--benefits-green-dark);
+  color: var(--benefits-navy);
 }
+
+/* Tablet */
 
 @media (max-width: 1000px) {
   .student-benefits {
@@ -274,6 +306,8 @@
     min-height: auto;
   }
 }
+
+/* Mobile */
 
 @media (max-width: 600px) {
   .student-benefits {
@@ -322,10 +356,13 @@
   }
 }
 
+/* Reduced motion accessibility */
+
 @media (prefers-reduced-motion: reduce) {
   .student-benefit-card,
   .student-benefit-card__icon,
-  .student-benefits__top-link {
+  .student-benefits__top-link,
+  .student-benefits__note > a {
     transition: none;
   }
 
