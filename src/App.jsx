@@ -16,7 +16,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import TrainingTracks from "./components/TrainingTracks";
 import ProjectShowcase from "./components/ProjectShowcase";
@@ -27,9 +27,13 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
 
 import Founder from "./pages/Founder";
+import About from "./pages/About";
+import Navbar from "./components/Navbar";
+
 
 
 const PROGRAM_FEE = 1299;
@@ -143,57 +147,7 @@ function Brand({ footer = false }) {
   );
 }
 
-function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
 
-  const links = [
-    { label: "About Us", href: "\about" },
-    { label: "Program", href: "#tracks" },
-    { label: "How it works", href: "#process" },
-    { label: "FAQs", href: "#faq" },
-  ];
-
-  return (
-    <header className="site-header">
-      <div className="container header-inner">
-        <Brand />
-
-        <button
-          className="mobile-menu-toggle"
-          type="button"
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-
-        <nav
-          className={`main-nav${menuOpen ? " main-nav-open" : ""}`}
-          aria-label="Main navigation"
-        >
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-
-          <a
-            className="button button-primary nav-cta"
-            href="#apply"
-            onClick={() => setMenuOpen(false)}
-          >
-            Apply now <ArrowUpRight size={16} />
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
-}
 
 function Hero() {
   return (
@@ -1284,7 +1238,7 @@ function Footer() {
 function LandingPage() {
   return (
     <>
-      <Header />
+      <Navbar />
       <main>
         <Hero />
         <ProgramHighlights />
@@ -1301,14 +1255,48 @@ function LandingPage() {
     </>
   );
 }
+function ScrollToSection() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) {
+      if (pathname !== "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+
+    const sectionId = decodeURIComponent(hash.slice(1));
+
+    // Wait until the destination page has rendered before scrolling.
+    const frameId = window.requestAnimationFrame(() => {
+      const target = document.getElementById(sectionId);
+
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [pathname, hash]);
+
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToSection />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/founder" element={<Founder />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
 }
+
 export default App;

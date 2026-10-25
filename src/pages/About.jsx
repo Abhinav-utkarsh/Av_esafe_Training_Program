@@ -9,6 +9,57 @@ import {
 import { Link } from "react-router-dom";
 import "./About.css";
 
+// Header must be outside the Founder component
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const links = [
+  ];
+
+  return (
+    <header className="site-header">
+      <div className="container header-inner">
+        <a className="brand" href="/" aria-label="Av_eSAFE home">
+          <span>Abhinav Utkarsh</span>
+        </a>
+
+        <button
+          className="mobile-menu-toggle"
+          type="button"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+
+        <nav
+          className={`main-nav${menuOpen ? " main-nav-open" : ""}`}
+          aria-label="Main navigation"
+        >
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+
+          <a
+            className="button button-primary nav-cta"
+            href="/#apply"
+            onClick={() => setMenuOpen(false)}
+          >
+            Back <ArrowUpRight size={16} />
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
 export default function About() {
   return (
     <main className="about-page">
