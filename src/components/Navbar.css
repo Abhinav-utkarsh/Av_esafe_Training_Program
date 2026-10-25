@@ -1,7 +1,6 @@
-
 /* ==========================================
-   Av_eSAFE — Premium Floating Glass Navbar
-   Full at top | Smooth compact glass on scroll
+   Av_eSAFE — Premium Transparent Glass Navbar
+   Full at top | Floating frosted glass on scroll
 ========================================== */
 
 .site-header {
@@ -28,34 +27,106 @@
     top 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     margin 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     border-radius 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.7s ease,
-    border-color 0.7s ease,
-    box-shadow 0.7s ease,
-    backdrop-filter 0.7s ease;
+    background 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
 }
 
-/* Floating glass state after scrolling */
+/* ==========================================
+   Floating Transparent Glass State
+========================================== */
+
 .site-header.is-scrolled {
   top: 12px;
   width: calc(100% - 80px);
   max-width: 1320px;
   margin: 0 auto;
 
-  background: rgba(245, 248, 255, 0.68);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  isolation: isolate;
+
+  /* Transparent glass */
+  background: rgba(255, 255, 255, 0.10);
+
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-bottom-color: rgba(255, 255, 255, 0.28);
   border-radius: 22px;
 
-  -webkit-backdrop-filter: saturate(190%) blur(28px);
-  backdrop-filter: saturate(190%) blur(28px);
+  /* Frosted glass blur */
+  -webkit-backdrop-filter: blur(35px) saturate(180%);
+  backdrop-filter: blur(35px) saturate(180%);
 
+  /* Natural glass depth and reflections */
   box-shadow:
-    0 12px 36px rgba(20, 43, 74, 0.12),
-    0 3px 10px rgba(20, 43, 74, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    0 14px 38px rgba(20, 43, 74, 0.075),
+    0 3px 10px rgba(20, 43, 74, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 1px 0 0 rgba(255, 255, 255, 0.24),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.18);
 }
 
-/* Header content */
+/* Soft diagonal light reflection */
+.site-header.is-scrolled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  border-radius: inherit;
+  pointer-events: none;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.26) 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    transparent 52%,
+    rgba(255, 255, 255, 0.05) 72%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
+}
+
+/* Thin reflective highlight on the top edge */
+.site-header.is-scrolled::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  z-index: 2;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.85) 25%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0.65) 75%,
+    transparent
+  );
+}
+
+/* Subtle response on hover */
+.site-header.is-scrolled:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+
+  box-shadow:
+    0 18px 44px rgba(20, 43, 74, 0.09),
+    0 4px 12px rgba(20, 43, 74, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 1px 0 0 rgba(255, 255, 255, 0.28),
+    inset -1px 0 0 rgba(255, 255, 255, 0.24);
+}
+
+/* ==========================================
+   Header Content
+========================================== */
+
 .site-header .header-inner {
+  position: relative;
+  z-index: 1;
+
   width: min(100% - 48px, 1240px);
   min-height: 76px;
   margin: 0 auto;
@@ -79,7 +150,10 @@
   min-height: 66px;
 }
 
-/* Brand logo and tagline */
+/* ==========================================
+   Brand Logo and Tagline
+========================================== */
+
 .site-header .brand {
   display: inline-flex;
   align-items: center;
@@ -116,7 +190,7 @@
   padding: 0;
 
   color: #64748B;
-  font-size: 9px;
+  font-size: 7.7px;
   font-weight: 600;
   letter-spacing: 0.15px;
   line-height: 1.4;
@@ -134,7 +208,10 @@
   color: #3478F6;
 }
 
-/* Desktop navigation */
+/* ==========================================
+   Desktop Navigation
+========================================== */
+
 .site-header .main-nav {
   display: flex;
   align-items: center;
@@ -186,7 +263,10 @@
   transform: scaleX(1);
 }
 
-/* Apply CTA */
+/* ==========================================
+   Apply CTA
+========================================== */
+
 .site-header .main-nav > .nav-cta {
   display: inline-flex;
   align-items: center;
@@ -196,14 +276,18 @@
   min-height: 42px;
   padding: 0 19px;
 
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
 
-  background: linear-gradient(135deg, #3478F6 0%, #2563D9 100%);
+  background: linear-gradient(
+    135deg,
+    #3478F6 0%,
+    #2563D9 100%
+  );
 
   box-shadow:
     0 4px 12px rgba(52, 120, 246, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 
   color: #FFFFFF;
   font-size: 13.5px;
@@ -216,7 +300,12 @@
 }
 
 .site-header .main-nav > .nav-cta:hover {
-  background: linear-gradient(135deg, #2563D9 0%, #142B4A 100%);
+  background: linear-gradient(
+    135deg,
+    #2563D9 0%,
+    #142B4A 100%
+  );
+
   box-shadow: 0 7px 18px rgba(52, 120, 246, 0.26);
   color: #FFFFFF;
   transform: translateY(-2px);
@@ -230,7 +319,10 @@
   transform: translate(2px, -2px);
 }
 
-/* Mobile menu toggle */
+/* ==========================================
+   Mobile Menu Toggle
+========================================== */
+
 .site-header .mobile-menu-toggle {
   display: none;
   align-items: center;
@@ -240,10 +332,10 @@
   height: 42px;
   padding: 0;
 
-  border: 1px solid rgba(20, 43, 74, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 12px;
 
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.35);
   color: #142B4A;
 
   cursor: pointer;
@@ -256,19 +348,27 @@
 
 .site-header .mobile-menu-toggle:hover {
   border-color: rgba(52, 120, 246, 0.4);
-  background: #EDF3FF;
+  background: rgba(237, 243, 255, 0.65);
 }
 
 .site-header .mobile-menu-toggle:active {
   transform: scale(0.95);
 }
 
-/* Tablet and mobile */
+/* ==========================================
+   Tablet and Mobile
+========================================== */
+
 @media (max-width: 768px) {
   .site-header.is-scrolled {
     top: 8px;
     width: calc(100% - 28px);
     border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    -webkit-backdrop-filter: blur(30px) saturate(175%);
+    backdrop-filter: blur(30px) saturate(175%);
   }
 
   .site-header .header-inner,
@@ -306,15 +406,17 @@
 
     padding: 14px 18px 20px;
 
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.65);
     border-radius: 18px;
 
-    background: rgba(248, 250, 255, 0.94);
+    background: rgba(255, 255, 255, 0.48);
 
-    -webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    backdrop-filter: blur(32px) saturate(180%);
 
-    box-shadow: 0 18px 35px rgba(20, 43, 74, 0.13);
+    box-shadow:
+      0 18px 35px rgba(20, 43, 74, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75);
   }
 
   .site-header .main-nav.main-nav-open {
@@ -350,7 +452,10 @@
   }
 }
 
-/* Small mobile screens */
+/* ==========================================
+   Small Mobile Screens
+========================================== */
+
 @media (max-width: 380px) {
   .site-header.is-scrolled {
     width: calc(100% - 20px);
@@ -377,7 +482,10 @@
   }
 }
 
-/* Mobile menu entrance */
+/* ==========================================
+   Mobile Menu Entrance
+========================================== */
+
 @keyframes navDropIn {
   from {
     opacity: 0;
@@ -390,25 +498,42 @@
   }
 }
 
-/* Keyboard accessibility */
+/* ==========================================
+   Keyboard Accessibility
+========================================== */
+
 .site-header a:focus-visible,
 .site-header button:focus-visible {
   outline: 3px solid rgba(52, 120, 246, 0.55);
   outline-offset: 4px;
 }
 
-/* Fallback for browsers without backdrop-filter */
-@supports not (backdrop-filter: blur(28px)) {
+/* ==========================================
+   Glass Effect Fallback
+========================================== */
+
+@supports not (
+  (backdrop-filter: blur(28px)) or
+  (-webkit-backdrop-filter: blur(28px))
+) {
   .site-header {
     background: rgba(255, 255, 255, 0.97);
   }
 
   .site-header.is-scrolled {
-    background: rgba(245, 248, 255, 0.96);
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .site-header.is-scrolled::before,
+  .site-header.is-scrolled::after {
+    display: none;
   }
 }
 
-/* Respect reduced-motion preferences */
+/* ==========================================
+   Reduced Motion Accessibility
+========================================== */
+
 @media (prefers-reduced-motion: reduce) {
   .site-header,
   .site-header *,

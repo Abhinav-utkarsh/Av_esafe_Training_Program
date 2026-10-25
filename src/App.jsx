@@ -24,6 +24,7 @@ import ProjectShowcase from "./components/ProjectShowcase";
 import StudentBenefits from "./components/StudentBenefits";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import {
   BrowserRouter,
@@ -1233,10 +1234,12 @@ function ScrollToSection() {
 }
 
 
+
 function App() {
   return (
     <BrowserRouter>
       <ScrollToSection />
+      <ScrollToTop />
 
       <Routes>
         <Route
@@ -1264,6 +1267,7 @@ function App() {
     </BrowserRouter>
   );
 }
+
 
 function NotFound() {
   return (
