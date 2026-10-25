@@ -19,14 +19,25 @@ export default function Navbar() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link
-          to="/"
-          className="brand"
-          aria-label="Av_eSAFE home"
-          onClick={closeMenu}
-        >
-          <span>Av_eSAFE</span>
-        </Link>
+        
+<Link
+  to="/"
+  className="brand"
+  aria-label="Av_eSAFE home"
+  onClick={closeMenu}
+>
+  <span className="brand-content">
+    <img
+      src="/logo.png"
+      alt="Av_eSAFE"
+      className="brand-logo"
+    />
+    <span className="brand-tagline">
+      Classroom to Career-Ready
+    </span>
+  </span>
+</Link>
+
 
         <button
           className="mobile-menu-toggle"
