@@ -147,7 +147,7 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { label: "About", href: "#about" },
+    { label: "About Us", href: "\about" },
     { label: "Program", href: "#tracks" },
     { label: "How it works", href: "#process" },
     { label: "FAQs", href: "#faq" },
