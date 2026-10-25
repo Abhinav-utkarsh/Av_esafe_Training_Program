@@ -1,13 +1,13 @@
+
 /* ==========================================
-   Av_eSAFE — Premium Transparent Glass Navbar
-   Full at top | Floating frosted glass on scroll
+   Av_eSAFE — Premium Glass Navbar
+   Transparent floating glass on scroll
 ========================================== */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-
   width: 100%;
   max-width: none;
   margin: 0 auto;
@@ -32,30 +32,23 @@
     box-shadow 0.5s ease;
 }
 
-/* ==========================================
-   Floating Transparent Glass State
-========================================== */
+/* Desktop floating glass */
 
 .site-header.is-scrolled {
   top: 12px;
   width: calc(100% - 80px);
   max-width: 1320px;
   margin: 0 auto;
-
   isolation: isolate;
 
-  /* Transparent glass */
   background: rgba(255, 255, 255, 0.10);
-
   border: 1px solid rgba(255, 255, 255, 0.48);
   border-bottom-color: rgba(255, 255, 255, 0.28);
   border-radius: 22px;
 
-  /* Frosted glass blur */
   -webkit-backdrop-filter: blur(35px) saturate(180%);
   backdrop-filter: blur(35px) saturate(180%);
 
-  /* Natural glass depth and reflections */
   box-shadow:
     0 14px 38px rgba(20, 43, 74, 0.075),
     0 3px 10px rgba(20, 43, 74, 0.035),
@@ -65,13 +58,11 @@
     inset 0 -1px 0 rgba(255, 255, 255, 0.18);
 }
 
-/* Soft diagonal light reflection */
 .site-header.is-scrolled::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-
   border-radius: inherit;
   pointer-events: none;
 
@@ -85,7 +76,6 @@
   );
 }
 
-/* Thin reflective highlight on the top edge */
 .site-header.is-scrolled::after {
   content: "";
   position: absolute;
@@ -94,7 +84,6 @@
   right: 8%;
   height: 1px;
   z-index: 2;
-
   pointer-events: none;
 
   background: linear-gradient(
@@ -107,7 +96,6 @@
   );
 }
 
-/* Subtle response on hover */
 .site-header.is-scrolled:hover {
   border-color: rgba(255, 255, 255, 0.65);
 
@@ -119,15 +107,13 @@
     inset -1px 0 0 rgba(255, 255, 255, 0.24);
 }
 
-/* ==========================================
-   Header Content
-========================================== */
+/* Header layout */
 
 .site-header .header-inner {
   position: relative;
   z-index: 1;
 
-  width: min(100% - 48px, 1240px);
+  width: min(calc(100% - 48px), 1240px);
   min-height: 76px;
   margin: 0 auto;
 
@@ -135,7 +121,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-
   box-sizing: border-box;
 
   transition:
@@ -144,23 +129,19 @@
     padding 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Compact inner content on scroll */
 .site-header.is-scrolled .header-inner {
   width: calc(100% - 32px);
   min-height: 66px;
 }
 
-/* ==========================================
-   Brand Logo and Tagline
-========================================== */
+/* Brand logo */
 
 .site-header .brand {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
   padding: 0;
-
-  color: #142B4A;
+  color: #142b4a;
   text-decoration: none;
   line-height: normal;
 }
@@ -178,24 +159,19 @@
   height: 42px;
   object-fit: contain;
   object-position: left center;
-
-  transition:
-    transform 0.4s ease,
-    opacity 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .site-header .brand-tagline {
   display: block;
   margin: 0;
   padding: 0;
-
-  color: #64748B;
+  color: #64748b;
   font-size: 7.7px;
   font-weight: 600;
   letter-spacing: 0.15px;
   line-height: 1.4;
   white-space: nowrap;
-
   transition: color 0.4s ease;
 }
 
@@ -205,12 +181,10 @@
 }
 
 .site-header .brand:hover .brand-tagline {
-  color: #3478F6;
+  color: #3478f6;
 }
 
-/* ==========================================
-   Desktop Navigation
-========================================== */
+/* Desktop navigation */
 
 .site-header .main-nav {
   display: flex;
@@ -221,7 +195,6 @@
 
 .site-header .main-nav > a {
   position: relative;
-
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -232,64 +205,52 @@
   letter-spacing: 0.01em;
   text-decoration: none;
   white-space: nowrap;
-
   transition: color 0.3s ease;
 }
 
-/* Animated underline */
 .site-header .main-nav > a:not(.nav-cta)::after {
   position: absolute;
   right: 0;
   bottom: -7px;
   left: 0;
-
   height: 2px;
   content: "";
 
-  background: linear-gradient(90deg, #3478F6, #14B8A6);
+  background: linear-gradient(90deg, #3478f6, #14b8a6);
   border-radius: 99px;
 
   transform: scaleX(0);
   transform-origin: center;
-
   transition: transform 0.35s ease;
 }
 
 .site-header .main-nav > a:not(.nav-cta):hover {
-  color: #3478F6;
+  color: #3478f6;
 }
 
 .site-header .main-nav > a:not(.nav-cta):hover::after {
   transform: scaleX(1);
 }
 
-/* ==========================================
-   Apply CTA
-========================================== */
+/* Apply button */
 
 .site-header .main-nav > .nav-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 9px;
-
   min-height: 42px;
   padding: 0 19px;
 
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
-
-  background: linear-gradient(
-    135deg,
-    #3478F6 0%,
-    #2563D9 100%
-  );
+  background: linear-gradient(135deg, #3478f6 0%, #2563d9 100%);
 
   box-shadow:
     0 4px 12px rgba(52, 120, 246, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.22);
 
-  color: #FFFFFF;
+  color: #fff;
   font-size: 13.5px;
   font-weight: 700;
 
@@ -300,14 +261,9 @@
 }
 
 .site-header .main-nav > .nav-cta:hover {
-  background: linear-gradient(
-    135deg,
-    #2563D9 0%,
-    #142B4A 100%
-  );
-
+  background: linear-gradient(135deg, #2563d9 0%, #142b4a 100%);
   box-shadow: 0 7px 18px rgba(52, 120, 246, 0.26);
-  color: #FFFFFF;
+  color: #fff;
   transform: translateY(-2px);
 }
 
@@ -319,14 +275,13 @@
   transform: translate(2px, -2px);
 }
 
-/* ==========================================
-   Mobile Menu Toggle
-========================================== */
+/* Mobile menu toggle */
 
 .site-header .mobile-menu-toggle {
   display: none;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 
   width: 42px;
   height: 42px;
@@ -334,10 +289,8 @@
 
   border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 12px;
-
   background: rgba(255, 255, 255, 0.35);
-  color: #142B4A;
-
+  color: #142b4a;
   cursor: pointer;
 
   transition:
@@ -356,23 +309,32 @@
 }
 
 /* ==========================================
-   Tablet and Mobile
+   Mobile navigation
+   Transparent navbar + solid white popup
 ========================================== */
 
 @media (max-width: 768px) {
+  /* Transparent floating navbar on mobile */
   .site-header.is-scrolled {
     top: 8px;
     width: calc(100% - 28px);
     border-radius: 18px;
 
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.38);
 
     -webkit-backdrop-filter: blur(30px) saturate(175%);
     backdrop-filter: blur(30px) saturate(175%);
+
+    box-shadow:
+      0 8px 28px rgba(20, 43, 74, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
   }
 
   .site-header .header-inner,
   .site-header.is-scrolled .header-inner {
+    position: relative;
+    z-index: 5;
     width: calc(100% - 36px);
     min-height: 70px;
     gap: 16px;
@@ -389,72 +351,110 @@
   }
 
   .site-header .mobile-menu-toggle {
+    position: relative;
+    z-index: 25;
     display: inline-flex;
-    flex-shrink: 0;
+
+    border: 1px solid #e1e7f0;
+    background: #fff;
+    color: #142b4a;
   }
 
+  .site-header .mobile-menu-toggle:hover {
+    border-color: rgba(52, 120, 246, 0.4);
+    background: #f1f5ff;
+  }
+
+  /* Dropdown popup stays solid white */
   .site-header .main-nav {
     position: absolute;
-    top: calc(100% + 8px);
+    z-index: 20;
+    top: calc(100% + 10px);
     right: 0;
     left: 0;
 
     display: none;
     align-items: stretch;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
 
-    padding: 14px 18px 20px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 14px;
 
-    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-sizing: border-box;
+    border: 1px solid #e5eaf3;
     border-radius: 18px;
 
-    background: rgba(255, 255, 255, 0.48);
-
-    -webkit-backdrop-filter: blur(32px) saturate(180%);
-    backdrop-filter: blur(32px) saturate(180%);
+    background: #fff;
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    backdrop-filter: blur(24px) saturate(140%);
 
     box-shadow:
-      0 18px 35px rgba(20, 43, 74, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      0 18px 45px rgba(20, 43, 74, 0.14),
+      0 3px 10px rgba(20, 43, 74, 0.05);
+
+    isolation: isolate;
   }
 
   .site-header .main-nav.main-nav-open {
     display: flex;
-    animation: navDropIn 0.3s ease both;
+    animation: navDropIn 0.25s ease both;
   }
 
+  /* Mobile navigation links */
   .site-header .main-nav > a:not(.nav-cta) {
     display: flex;
+    align-items: center;
     width: 100%;
-    padding: 13px 12px;
+    min-height: 44px;
+    margin: 0;
+    padding: 12px 13px;
 
+    box-sizing: border-box;
     border: 1px solid transparent;
     border-radius: 10px;
 
+    background: transparent;
+    color: #334155;
     font-size: 14px;
-    box-sizing: border-box;
+    font-weight: 650;
+    line-height: 1.5;
+    white-space: normal;
   }
 
   .site-header .main-nav > a:not(.nav-cta):hover {
-    background: rgba(52, 120, 246, 0.07);
+    background: #f1f5ff;
+    color: #2563d9;
   }
 
   .site-header .main-nav > a:not(.nav-cta)::after {
     display: none;
   }
 
+  /* Apply Now inside popup */
   .site-header .main-nav > .nav-cta {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
     width: 100%;
     min-height: 46px;
-    margin-top: 10px;
+    margin: 8px 0 0;
+    padding: 12px 16px;
+    border-radius: 11px;
+
+    background: linear-gradient(135deg, #3478f6, #2563d9);
+    color: #fff;
+  }
+
+  .site-header .main-nav > .nav-cta:hover {
+    background: linear-gradient(135deg, #2563d9, #142b4a);
+    color: #fff;
   }
 }
 
-/* ==========================================
-   Small Mobile Screens
-========================================== */
+/* Small mobile screens */
 
 @media (max-width: 380px) {
   .site-header.is-scrolled {
@@ -482,9 +482,7 @@
   }
 }
 
-/* ==========================================
-   Mobile Menu Entrance
-========================================== */
+/* Dropdown entrance animation */
 
 @keyframes navDropIn {
   from {
@@ -498,9 +496,7 @@
   }
 }
 
-/* ==========================================
-   Keyboard Accessibility
-========================================== */
+/* Keyboard accessibility */
 
 .site-header a:focus-visible,
 .site-header button:focus-visible {
@@ -508,9 +504,7 @@
   outline-offset: 4px;
 }
 
-/* ==========================================
-   Glass Effect Fallback
-========================================== */
+/* Fallback for browsers without backdrop-filter */
 
 @supports not (
   (backdrop-filter: blur(28px)) or
@@ -528,11 +522,15 @@
   .site-header.is-scrolled::after {
     display: none;
   }
+
+  @media (max-width: 768px) {
+    .site-header .main-nav {
+      background: #fff;
+    }
+  }
 }
 
-/* ==========================================
-   Reduced Motion Accessibility
-========================================== */
+/* Reduced motion accessibility */
 
 @media (prefers-reduced-motion: reduce) {
   .site-header,

@@ -173,15 +173,6 @@ function TrainingTracks() {
                     <span key={skill}>{skill}</span>
                   ))}
                 </div>
-
-                <a
-                  className="training-card__link"
-                  href="#contact"
-                  aria-label={`Enquire about ${track.title}`}
-                >
-                  Explore this track
-                  <ArrowUpRight size={17} aria-hidden="true" />
-                </a>
               </article>
             );
           })}

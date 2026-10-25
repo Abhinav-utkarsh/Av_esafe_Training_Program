@@ -4,7 +4,9 @@ import {
   GraduationCap,
   Lightbulb,
   Target,
-  UserRound,
+  Code2,
+  BrainCircuit,
+  BookOpen,
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
@@ -13,11 +15,10 @@ import "./Founder.css";
 export default function Founder() {
   return (
     <div className="founder-page">
-      {/* Shared website navbar */}
       <Navbar />
 
-      {/* Founder Hero Section */}
       <main>
+        {/* Founder Hero Section */}
         <section className="founder-hero">
           <div className="founder-eyebrow">
             <span />
@@ -25,46 +26,52 @@ export default function Founder() {
           </div>
 
           <div className="founder-content">
-            {/* Founder Photo Placeholder */}
-            <div
-              className="founder-photo-placeholder"
-              aria-label="Founder photo placeholder"
-            >
-              <UserRound size={76} strokeWidth={1.2} />
-              <span>FOUNDER & DEVELOPER</span>
+            <div className="founder-photo-wrapper">
+              <img
+                src="/founder.jpg"
+                alt="Abhinav Utkarsh, Founder of Av_eSAFE"
+                className="founder-photo"
+              />
+              <div className="founder-photo-caption">
+                <span className="founder-caption-dot" />
+                Founder & Software Engineer
+              </div>
             </div>
 
-            {/* Founder Introduction */}
             <div className="founder-intro">
               <p className="founder-kicker">MEET THE FOUNDER</p>
 
               <h1>
                 Building technology.
-                <span>Empowering people.</span>
+                <span> Empowering people.</span>
               </h1>
 
-              <h2>
-                The vision behind Av_eSAFE Training
-              </h2>
-
-              <p>
-                Av_eSAFE was created with a simple vision: make technology
-                education practical, accessible, and career-focused. Learning
-                should go beyond theory and help students develop the skills
-                and confidence needed to build real-world solutions.
+              <h2>Abhinav Utkarsh</h2>
+              <p className="founder-designation">
+                Founder of Av_eSAFE | Education & IT Services | Software Engineer
               </p>
 
               <p>
-                Through Av_eSAFE Training, the goal is to bridge the gap
-                between classroom learning and industry expectations with
-                structured learning paths, hands-on practice, and project-based
-                experiences.
+                Abhinav Utkarsh is the founder of Av_eSAFE, an initiative
+                focused on making technology education more practical,
+                accessible, and meaningful. With an interest in software
+                engineering, emerging technologies, and digital learning,
+                he aims to create solutions that help people learn,
+                build, and grow with technology.
               </p>
 
               <p>
-                The journey is driven by curiosity, continuous learning, and
-                the belief that the right guidance and practical exposure can
-                help learners take their next step in technology.
+                Through Av_eSAFE Training, his vision is to bridge the gap
+                between learning and industry expectations by bringing
+                together structured courses, hands-on coding practice,
+                assessments, and project-based learning.
+              </p>
+
+              <p>
+                His approach is driven by continuous learning, innovation,
+                and the belief that practical skills and the right guidance
+                can help learners become more confident in their technology
+                journey.
               </p>
 
               <Link to="/#tracks" className="founder-cta">
@@ -75,13 +82,58 @@ export default function Founder() {
           </div>
         </section>
 
+        {/* Expertise Section */}
+        <section className="founder-expertise">
+          <div className="founder-section-heading">
+            <span>AREAS OF FOCUS</span>
+            <h2>Where technology meets learning</h2>
+            <p>
+              Av_eSAFE brings together software, education, and innovation
+              to make technology more accessible and practical.
+            </p>
+          </div>
+
+          <div className="founder-expertise-grid">
+            <article className="founder-expertise-card">
+              <div className="founder-expertise-icon">
+                <Code2 size={25} />
+              </div>
+              <h3>Software Engineering</h3>
+              <p>
+                Building digital solutions and exploring software
+                development, testing, and technology-driven problem-solving.
+              </p>
+            </article>
+
+            <article className="founder-expertise-card">
+              <div className="founder-expertise-icon">
+                <BookOpen size={25} />
+              </div>
+              <h3>Technology Education</h3>
+              <p>
+                Creating structured learning experiences that combine
+                core concepts, coding exercises, assessments, and projects.
+              </p>
+            </article>
+
+            <article className="founder-expertise-card">
+              <div className="founder-expertise-icon">
+                <BrainCircuit size={25} />
+              </div>
+              <h3>IT & Emerging Technologies</h3>
+              <p>
+                Exploring automation, AI-enabled solutions, and practical
+                applications of modern technologies.
+              </p>
+            </article>
+          </div>
+        </section>
+
         {/* Mission Section */}
         <section className="founder-mission">
           <div className="founder-section-heading">
             <span>OUR PURPOSE</span>
-
             <h2>Learning that leads to real opportunities</h2>
-
             <p>
               We want to make technology education more engaging, practical,
               and relevant to the skills learners need to grow.
@@ -91,9 +143,7 @@ export default function Founder() {
           <div className="founder-values">
             <article>
               <GraduationCap size={28} />
-
               <h3>Practical Learning</h3>
-
               <p>
                 Learn core concepts through hands-on exercises, coding
                 practice, and real-world projects instead of theory alone.
@@ -102,9 +152,7 @@ export default function Founder() {
 
             <article>
               <Lightbulb size={28} />
-
               <h3>Innovation First</h3>
-
               <p>
                 Explore modern technologies, experiment with ideas, and
                 develop the problem-solving mindset needed in a changing
@@ -114,9 +162,7 @@ export default function Founder() {
 
             <article>
               <Target size={28} />
-
               <h3>Career Readiness</h3>
-
               <p>
                 Build confidence through structured learning, assessments,
                 and practical skills that support your journey toward a
@@ -129,7 +175,6 @@ export default function Founder() {
         {/* Closing CTA */}
         <section className="founder-bottom">
           <h2>Your journey into technology starts here.</h2>
-
           <p>
             Explore our learning programs, strengthen your foundations, and
             take the next step toward becoming career-ready.
@@ -142,7 +187,6 @@ export default function Founder() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="founder-footer">
         <p>
           © {new Date().getFullYear()} Av_eSAFE Training. All rights reserved.

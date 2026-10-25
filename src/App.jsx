@@ -172,9 +172,11 @@ function Hero() {
           </h1>
 
           <p className="hero-description">
-            Turn what you know into what you can do. Build real-world
-            projects, sharpen your technical skills, and prepare for
-            your next career opportunity with Av_eSAFE.
+            From Classrooms to Careers, Turn Dreams into Reality.<br/>
+            Build Skills, Create Projects, and Rise to New Possibilities.
+            Learn Today, Lead Tomorrow, and Make Every Opportunity Count.
+            Your Journey from Learning to Placement Success Begins with AV eSAFE.
+
           </p>
 
           <div className="hero-actions">
@@ -184,7 +186,7 @@ function Hero() {
             <a className="button button-primary-a button-large" href="#tracks">
               Explore the program <ArrowRight size={18} />
             </a>
-            
+
           </div>
 
           <div className="hero-trust">

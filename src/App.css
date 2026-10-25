@@ -2313,3 +2313,912 @@ select:focus {
   border-color: #3478F6;
   outline-color: rgba(52, 120, 246, 0.25);
 }
+
+/* =====================================================
+   Av_eSAFE TRAINING — GLOBAL GLASSMORPHISM OVERRIDES
+   Navy + Blue + Teal
+   Paste this at the VERY BOTTOM of App.css
+===================================================== */
+
+:root {
+  --color-primary: #3478f6;
+  --color-primary-dark: #142b4a;
+  --color-teal: #14b8a6;
+  --color-ink: #142b4a;
+  --color-muted: #64748b;
+  --color-border: rgba(180, 199, 225, 0.55);
+  --color-soft: #f4f7fb;
+
+  --glass-white: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(180, 199, 225, 0.55);
+  --glass-shadow: 0 10px 35px rgba(20, 43, 74, 0.055);
+}
+
+/* =====================================================
+   GLOBAL BACKGROUND
+===================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 86px;
+}
+
+body {
+  color: #334155;
+  background: #f4f7fb;
+}
+
+#root {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at 5% 12%,
+      rgba(52, 120, 246, 0.045),
+      transparent 35%
+    ),
+    #f4f7fb;
+}
+
+main {
+  overflow: clip;
+}
+
+/* Consistent heading colors */
+
+.hero h1,
+.section h2,
+.section-heading h2,
+.about-copy h2,
+.apply-content h2,
+.application-intro h2 {
+  color: var(--color-ink);
+}
+
+.hero h1 span,
+.about-copy h2 span {
+  color: var(--color-primary);
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.button {
+  border-radius: 12px;
+  font-weight: 750;
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  border-color: transparent;
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #3478f6,
+    #2563d9
+  );
+  box-shadow: 0 7px 20px rgba(52, 120, 246, 0.2);
+}
+
+.button-primary:hover {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #2563d9,
+    #142b4a
+  );
+  box-shadow: 0 11px 26px rgba(52, 120, 246, 0.25);
+}
+
+.button-primary-a {
+  border-color: rgba(52, 120, 246, 0.2);
+  border-radius: 12px;
+  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.button-primary-a:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: #ffffff;
+}
+
+.button-outline {
+  border-color: var(--glass-border);
+  border-radius: 12px;
+  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.button-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.button-light {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.button-light:hover {
+  color: var(--color-primary);
+  background: #ffffff;
+}
+
+/* =====================================================
+   HEADER / NAVIGATION
+===================================================== */
+
+.site-header {
+  background: rgba(248, 251, 255, 0.82);
+  border-bottom: 1px solid rgba(180, 199, 225, 0.5);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: 0 4px 22px rgba(20, 43, 74, 0.025);
+}
+
+.header-inner {
+  min-height: 78px;
+}
+
+.brand-symbol {
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    #3478f6,
+    #142b4a
+  );
+  box-shadow: 0 7px 18px rgba(52, 120, 246, 0.2);
+}
+
+.main-nav > a:not(.button) {
+  transition:
+    color 200ms ease,
+    background 200ms ease;
+}
+
+.main-nav > a:not(.button):hover {
+  color: var(--color-primary);
+}
+
+.mobile-menu-toggle {
+  border-color: var(--glass-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--color-ink);
+}
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+
+.hero {
+  background:
+    radial-gradient(
+      ellipse at 80% 35%,
+      rgba(52, 120, 246, 0.13),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 15% 90%,
+      rgba(20, 184, 166, 0.08),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      #f8fbff 0%,
+      #edf4ff 52%,
+      #f8fbff 100%
+    );
+}
+
+.hero-decoration {
+  border-color: rgba(52, 120, 246, 0.1);
+}
+
+.eyebrow-pill {
+  border-color: rgba(52, 120, 246, 0.18);
+  border-radius: 50px;
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.66);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 5px 20px rgba(20, 43, 74, 0.035);
+}
+
+.hero-description {
+  color: var(--color-muted);
+}
+
+.trust-icon {
+  border-color: rgba(52, 120, 246, 0.15);
+  border-radius: 14px;
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 5px 16px rgba(20, 43, 74, 0.035);
+}
+
+/* Hero illustration */
+
+.visual-glow {
+  background: radial-gradient(
+    circle,
+    rgba(52, 120, 246, 0.2) 0%,
+    rgba(52, 120, 246, 0.08) 43%,
+    transparent 73%
+  );
+}
+
+.visual-orbit {
+  border-color: rgba(52, 120, 246, 0.17);
+}
+
+.visual-orbit-inner {
+  border-color: rgba(20, 184, 166, 0.23);
+}
+
+.visual-center {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(237, 244, 255, 0.8)
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 25px 75px rgba(20, 43, 74, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.visual-center-icon {
+  background: linear-gradient(
+    145deg,
+    #3478f6,
+    #142b4a
+  );
+  box-shadow: 0 10px 26px rgba(52, 120, 246, 0.25);
+}
+
+.floating-card {
+  border-color: rgba(255, 255, 255, 0.82);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.73);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow:
+    0 15px 42px rgba(20, 43, 74, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.floating-icon {
+  border-radius: 13px;
+}
+
+.icon-mint {
+  color: #0f9f91;
+  background: rgba(20, 184, 166, 0.12);
+}
+
+.icon-lavender {
+  color: #3478f6;
+  background: rgba(52, 120, 246, 0.1);
+}
+
+.career-card-icon {
+  color: var(--color-primary);
+  background: rgba(20, 184, 166, 0.12);
+}
+
+.career-card-tag {
+  color: var(--color-primary);
+}
+
+.career-progress {
+  background: #e3eaf5;
+}
+
+.career-progress span {
+  background: linear-gradient(
+    90deg,
+    #3478f6,
+    #14b8a6
+  );
+}
+
+.visual-sparkle {
+  color: var(--color-teal);
+}
+
+/* =====================================================
+   HIGHLIGHTS STRIP
+===================================================== */
+
+.highlights-strip {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(180, 199, 225, 0.5);
+  border-bottom: 1px solid rgba(180, 199, 225, 0.5);
+  background: rgba(255, 255, 255, 0.67);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.highlights-inner {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.highlight-item {
+  min-width: 0;
+}
+
+.highlight-icon {
+  border: 1px solid rgba(52, 120, 246, 0.12);
+  border-radius: 14px;
+  color: var(--color-primary);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(228, 238, 255, 0.8)
+  );
+  box-shadow: 0 5px 15px rgba(20, 43, 74, 0.04);
+}
+
+/* =====================================================
+   ABOUT SECTION
+===================================================== */
+
+.about-section {
+  background:
+    radial-gradient(
+      ellipse at 90% 30%,
+      rgba(52, 120, 246, 0.055),
+      transparent 38%
+    ),
+    #f8fbff;
+}
+
+.about-copy .section-description,
+.about-copy .body-copy {
+  color: var(--color-muted);
+}
+
+.about-panel {
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.61);
+  backdrop-filter: blur(20px) saturate(145%);
+  -webkit-backdrop-filter: blur(20px) saturate(145%);
+  box-shadow:
+    0 15px 45px rgba(20, 43, 74, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.about-panel-header {
+  border-bottom-color: rgba(180, 199, 225, 0.55);
+}
+
+.approach-item {
+  border-bottom-color: rgba(180, 199, 225, 0.48);
+}
+
+.approach-number {
+  border-color: rgba(52, 120, 246, 0.15);
+  border-radius: 13px;
+  color: var(--color-primary);
+  background: rgba(237, 243, 255, 0.85);
+}
+
+.about-panel-footer {
+  color: var(--color-primary);
+}
+
+/* =====================================================
+   SHARED SECTION LABELS AND TEXT
+===================================================== */
+
+.section-label {
+  color: var(--color-primary);
+}
+
+.section-label-dot {
+  background: var(--color-teal);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+}
+
+.section-description,
+.body-copy,
+.section-heading > p {
+  color: var(--color-muted);
+}
+
+.text-link {
+  color: var(--color-primary);
+  transition: color 200ms ease;
+}
+
+.text-link:hover {
+  color: #14a99b;
+}
+
+/* =====================================================
+   PROCESS SECTION
+===================================================== */
+
+.process-section {
+  background:
+    radial-gradient(
+      ellipse at 5% 80%,
+      rgba(20, 184, 166, 0.06),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      #f8fbff,
+      #ffffff 55%,
+      #f2f7ff
+    );
+}
+
+.process-card-number > span {
+  border: 1px solid rgba(52, 120, 246, 0.17);
+  border-radius: 15px;
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 18px rgba(20, 43, 74, 0.04);
+}
+
+.process-card h3 {
+  color: var(--color-ink);
+}
+
+.process-card p {
+  color: var(--color-muted);
+}
+
+.process-connector {
+  border-color: rgba(52, 120, 246, 0.3);
+}
+
+.interview-banner {
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(20, 184, 166, 0.1),
+      transparent 38%
+    ),
+    rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 12px 35px rgba(20, 43, 74, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.interview-banner-icon {
+  border: 1px solid rgba(52, 120, 246, 0.12);
+  border-radius: 16px;
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.interview-banner-copy > span {
+  color: var(--color-primary);
+}
+
+.interview-banner-copy h3 {
+  color: var(--color-ink);
+}
+
+.interview-banner-copy p {
+  color: var(--color-muted);
+}
+
+/* =====================================================
+   PRICING SECTION
+===================================================== */
+
+.pricing-section {
+  background:
+    radial-gradient(
+      ellipse at 95% 20%,
+      rgba(52, 120, 246, 0.09),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #edf4ff,
+      #f8fbff 60%,
+      #f1fbfa
+    );
+}
+
+.pricing-copy h2 {
+  color: var(--color-ink);
+}
+
+.pricing-copy > p {
+  color: var(--color-muted);
+}
+
+.pricing-points span {
+  color: #475569;
+}
+
+.pricing-points svg {
+  color: var(--color-teal);
+}
+
+.pricing-card {
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 23px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  box-shadow:
+    0 20px 55px rgba(20, 43, 74, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition:
+    transform 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(52, 120, 246, 0.35);
+  box-shadow: 0 25px 65px rgba(20, 43, 74, 0.11);
+}
+
+.pricing-card-label {
+  color: var(--color-primary);
+}
+
+.pricing-amount {
+  color: var(--color-ink);
+}
+
+.pricing-divider {
+  background: rgba(180, 199, 225, 0.55);
+}
+
+.pricing-list li {
+  color: var(--color-muted);
+}
+
+.pricing-list svg {
+  color: var(--color-teal);
+}
+
+.pricing-disclaimer {
+  color: var(--color-muted);
+}
+
+/* =====================================================
+   FAQ SECTION
+===================================================== */
+
+.faq-section {
+  background:
+    radial-gradient(
+      ellipse at 5% 15%,
+      rgba(52, 120, 246, 0.055),
+      transparent 35%
+    ),
+    #f8fbff;
+}
+
+.faq-intro h2 {
+  color: var(--color-ink);
+}
+
+.faq-intro > p {
+  color: var(--color-muted);
+}
+
+.faq-list {
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(20, 43, 74, 0.035);
+}
+
+.faq-item {
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(180, 199, 225, 0.5);
+}
+
+.faq-item:last-child {
+  border-bottom: 0;
+}
+
+.faq-question {
+  color: var(--color-ink);
+}
+
+.faq-question:hover {
+  color: var(--color-primary);
+}
+
+.faq-chevron {
+  color: var(--color-primary);
+}
+
+.faq-answer {
+  color: var(--color-muted);
+}
+
+/* =====================================================
+   APPLICATION / APPLY SECTION
+===================================================== */
+
+.apply-section {
+  background: #f8fbff;
+}
+
+.apply-card {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 26px;
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(20, 184, 166, 0.3),
+      transparent 33%
+    ),
+    linear-gradient(
+      120deg,
+      #142b4a 0%,
+      #2458a7 55%,
+      #3478f6 100%
+    );
+  box-shadow:
+    0 25px 65px rgba(20, 43, 74, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.apply-decoration {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.apply-eyebrow {
+  color: #a9eee4;
+}
+
+.apply-content h2 {
+  color: #ffffff;
+}
+
+.apply-content > p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.apply-note {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.apply-illustration-ring {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.apply-illustration-icon {
+  border-color: rgba(255, 255, 255, 0.28);
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 15px 40px rgba(10, 25, 50, 0.12);
+}
+
+/* Application form */
+
+.application-card {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 26px;
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(20, 184, 166, 0.24),
+      transparent 32%
+    ),
+    linear-gradient(
+      120deg,
+      #142b4a,
+      #2458a7 60%,
+      #3478f6
+    );
+  box-shadow: 0 22px 60px rgba(20, 43, 74, 0.13);
+}
+
+.application-form-wrap {
+  border-color: rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  box-shadow:
+    0 18px 50px rgba(10, 25, 50, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.application-form-heading h3 {
+  color: var(--color-ink);
+}
+
+.application-form-heading p {
+  color: var(--color-muted);
+}
+
+.application-field input,
+.application-field select,
+.application-field textarea {
+  border-color: rgba(180, 199, 225, 0.7);
+  border-radius: 11px;
+  background: rgba(248, 250, 252, 0.88);
+  transition:
+    border-color 200ms ease,
+    background 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.application-field input:focus,
+.application-field select:focus,
+.application-field textarea:focus {
+  border-color: var(--color-primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(52, 120, 246, 0.1);
+}
+
+.application-success-icon {
+  border-radius: 16px;
+  color: var(--color-teal);
+  background: rgba(20, 184, 166, 0.12);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer {
+  border-top: 1px solid rgba(180, 199, 225, 0.48);
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(52, 120, 246, 0.055),
+      transparent 35%
+    ),
+    #f4f7fb;
+}
+
+.footer-main {
+  border-bottom: 1px solid rgba(180, 199, 225, 0.25);
+}
+
+.footer-links-column h3 {
+  color: var(--color-ink);
+}
+
+.footer-links-column a {
+  color: var(--color-muted);
+  transition:
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.footer-links-column a:hover {
+  transform: translateX(2px);
+  color: var(--color-primary);
+}
+
+.footer-status {
+  color: var(--color-primary);
+}
+
+.footer-status > span {
+  background: var(--color-teal);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+}
+
+.footer-bottom {
+  border-top-color: rgba(180, 199, 225, 0.55);
+}
+
+.footer-bottom a {
+  color: var(--color-primary);
+  transition: color 200ms ease;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-teal);
+}
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid rgba(52, 120, 246, 0.45);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .text-link,
+  .pricing-card,
+  .footer-links-column a {
+    transition: none;
+  }
+
+  .button:hover,
+  .pricing-card:hover,
+  .footer-links-column a:hover {
+    transform: none;
+  }
+}
+
+/* =====================================================
+   MOBILE GLASS ADJUSTMENTS
+   Existing layout breakpoints remain unchanged
+===================================================== */
+
+@media (max-width: 760px) {
+  .site-header {
+    background: rgba(248, 251, 255, 0.94);
+  }
+
+  .main-nav {
+    border-bottom-color: var(--glass-border);
+    background: rgba(248, 251, 255, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .floating-card {
+    background: rgba(255, 255, 255, 0.86);
+  }
+
+  .apply-card,
+  .application-card {
+    border-radius: 20px;
+  }
+
+  .pricing-card {
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .application-form-wrap {
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .faq-item {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .interview-banner {
+    border-radius: 17px;
+  }
+}

@@ -1,30 +1,50 @@
+
+/* =========================================
+   AV_eSAFE — TRAINING TRACKS
+   Blue Glassmorphism Theme
+   ========================================= */
+
 .training-tracks,
 .training-tracks.section-padding {
   --tracks-green: #3478F6;
   --tracks-green-dark: #142B4A;
   --tracks-ink: #142B4A;
   --tracks-muted: #64748B;
-  --tracks-border: #DCE5F0;
+  --tracks-border: rgba(180, 199, 225, 0.55);
   --tracks-soft: #F4F7FB;
 
   position: relative;
+  isolation: isolate;
   overflow: hidden;
+
   background:
     radial-gradient(
+      circle at 8% 12%,
+      rgba(52, 120, 246, 0.09),
+      transparent 30%
+    ),
+    radial-gradient(
       circle at 95% 10%,
-      rgba(52, 120, 246, 0.07),
+      rgba(52, 120, 246, 0.08),
       transparent 28%
     ),
-    #F4F7FB;
+    linear-gradient(135deg, #F7F9FD 0%, #EFF4FB 100%);
+
   padding: 32px 24px 104px;
   scroll-margin-top: 86px;
 }
 
 .training-tracks__container {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1250px;
   margin: 0 auto;
 }
+
+/* =========================================
+   SECTION HEADING
+   ========================================= */
 
 .training-tracks__heading {
   margin-bottom: 42px;
@@ -35,6 +55,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 19px;
+
   color: var(--tracks-green);
   font-size: 11px;
   font-weight: 800;
@@ -46,8 +67,9 @@
   height: 9px;
   flex-shrink: 0;
   border-radius: 50%;
+
   background: #14B8A6;
-  box-shadow: 0 0 0 5px #E6F7F5;
+  box-shadow: 0 0 0 5px rgba(20, 184, 166, 0.12);
 }
 
 .training-tracks__heading-row {
@@ -60,6 +82,7 @@
 .training-tracks__heading h2 {
   max-width: 760px;
   margin: 0;
+
   color: var(--tracks-ink);
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 750;
@@ -74,6 +97,7 @@
 .training-tracks__intro {
   max-width: 690px;
   margin: 19px 0 0;
+
   color: var(--tracks-muted);
   font-size: 15px;
   line-height: 1.9;
@@ -84,14 +108,25 @@
   align-items: center;
   gap: 9px;
   flex-shrink: 0;
+
   padding: 12px 15px;
-  border: 1px solid #DCE5F0;
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 100px;
-  background: #FFFFFF;
+
+  background: rgba(255, 255, 255, 0.62);
   color: var(--tracks-green-dark);
   font-size: 12px;
   font-weight: 700;
+
+  box-shadow: 0 5px 18px rgba(20, 43, 74, 0.045);
+
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
+
+/* =========================================
+   TRAINING CARDS GRID
+   ========================================= */
 
 .training-tracks__grid {
   display: grid;
@@ -99,60 +134,169 @@
   gap: 20px;
 }
 
+/* =========================================
+   GLASS CARD
+   ========================================= */
+
 .training-card {
+  position: relative;
+  isolation: isolate;
+
   display: flex;
   min-width: 0;
   flex-direction: column;
-  padding: 25px 22px 21px;
-  border: 1px solid var(--tracks-border);
-  border-radius: 19px;
-  background: #FFFFFF;
-  box-shadow: 0 5px 20px rgba(20, 43, 74, 0.035);
+
+  padding: 25px 22px 23px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.56);
+
+  box-shadow:
+    0 8px 28px rgba(20, 43, 74, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  backdrop-filter: blur(18px) saturate(145%);
+
   transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
+    transform 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    background 260ms ease;
+}
+
+/* Ambient blue glow */
+.training-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -85px;
+  right: -85px;
+
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(52, 120, 246, 0.14) 0%,
+    rgba(52, 120, 246, 0.04) 45%,
+    transparent 72%
+  );
+
+  pointer-events: none;
+
+  transition: transform 350ms ease;
+}
+
+/* Inner glass highlight */
+.training-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: inherit;
+
+  pointer-events: none;
 }
 
 .training-card:hover {
-  transform: translateY(-5px);
-  border-color: #A9C7FF;
-  box-shadow: 0 17px 38px rgba(20, 43, 74, 0.09);
+  transform: translateY(-6px);
+
+  border-color: rgba(52, 120, 246, 0.3);
+  background: rgba(255, 255, 255, 0.78);
+
+  box-shadow:
+    0 18px 42px rgba(20, 43, 74, 0.09),
+    0 4px 12px rgba(52, 120, 246, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
+.training-card:hover::before {
+  transform: scale(1.25);
+}
+
+/* =========================================
+   FEATURED AI CARD
+   ========================================= */
+
 .training-card--featured {
-  border-color: #B9D1FF;
+  border-color: rgba(113, 145, 255, 0.4);
+
   background: linear-gradient(
     145deg,
-    #EAF1FF,
-    #FFFFFF 72%
+    rgba(226, 236, 255, 0.86) 0%,
+    rgba(255, 255, 255, 0.7) 55%,
+    rgba(235, 244, 255, 0.78) 100%
+  );
+
+  box-shadow:
+    0 10px 32px rgba(52, 120, 246, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.training-card--featured::before {
+  background: radial-gradient(
+    circle,
+    rgba(108, 92, 231, 0.18) 0%,
+    rgba(52, 120, 246, 0.05) 48%,
+    transparent 72%
   );
 }
+
+.training-card--featured:hover {
+  border-color: rgba(90, 116, 245, 0.5);
+  background: linear-gradient(
+    145deg,
+    rgba(226, 236, 255, 0.96),
+    rgba(255, 255, 255, 0.85)
+  );
+}
+
+/* =========================================
+   CARD HEADER
+   ========================================= */
 
 .training-card__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 27px;
+  gap: 12px;
+
+  margin-bottom: 25px;
 }
 
 .training-card__icon {
   display: grid;
   width: 49px;
   height: 49px;
+  flex-shrink: 0;
   place-items: center;
-  border: 1px solid #D7E5FF;
-  border-radius: 14px;
-  background: #EAF1FF;
+
+  border: 1px solid rgba(52, 120, 246, 0.14);
+  border-radius: 15px;
+
+  background: rgba(52, 120, 246, 0.09);
   color: var(--tracks-green);
+
   transition:
-    background 220ms ease,
-    color 220ms ease;
+    background 240ms ease,
+    color 240ms ease,
+    transform 240ms ease,
+    box-shadow 240ms ease;
 }
 
 .training-card:hover .training-card__icon {
+  transform: translateY(-2px);
+
   background: var(--tracks-green);
   color: #FFFFFF;
+
+  box-shadow: 0 6px 15px rgba(52, 120, 246, 0.2);
 }
 
 .training-card__number {
@@ -162,22 +306,34 @@
   letter-spacing: 1px;
 }
 
+/* =========================================
+   CARD CONTENT
+   ========================================= */
+
 .training-card__content {
   flex: 1;
 }
 
 .training-card__category {
   display: inline-block;
-  margin-bottom: 9px;
-  color: var(--tracks-green);
+  margin-bottom: 10px;
+  padding: 5px 9px;
+
+  border: 1px solid rgba(52, 120, 246, 0.1);
+  border-radius: 100px;
+
+  background: rgba(52, 120, 246, 0.065);
+  color: #3478F6;
+
   font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.7px;
   text-transform: uppercase;
 }
 
 .training-card__content h3 {
   margin: 0 0 11px;
+
   color: var(--tracks-ink);
   font-size: 18px;
   font-weight: 750;
@@ -187,65 +343,79 @@
 
 .training-card__content p {
   margin: 0;
+
   color: var(--tracks-muted);
   font-size: 12.5px;
   line-height: 1.85;
 }
 
+/* =========================================
+   SKILL CHIPS
+   ========================================= */
+
 .training-card__skills {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin: 22px 0 20px;
+
+  margin: 22px 0 0;
+  padding-top: 0;
 }
 
 .training-card__skills span {
+  display: inline-flex;
+  align-items: center;
+
   padding: 6px 9px;
-  border: 1px solid #DCE5F0;
-  border-radius: 7px;
-  background: #F4F7FB;
+  border: 1px solid rgba(180, 199, 225, 0.48);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.52);
   color: #475569;
+
   font-size: 10px;
   font-weight: 650;
   line-height: 1.4;
+
+  transition:
+    border-color 200ms ease,
+    background 200ms ease;
 }
 
+.training-card:hover .training-card__skills span {
+  border-color: rgba(52, 120, 246, 0.16);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+/* Old card link removed from JSX.
+   Keep no visible link or divider at the card bottom. */
 .training-card__link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding-top: 16px;
-  border-top: 1px solid #DCE5F0;
-  color: var(--tracks-green-dark);
-  font-size: 12px;
-  font-weight: 750;
-  text-decoration: none;
-  transition: color 180ms ease;
+  display: none;
 }
 
-.training-card__link svg {
-  flex-shrink: 0;
-  transition: transform 180ms ease;
-}
-
-.training-card__link:hover {
-  color: #3478F6;
-}
-
-.training-card__link:hover svg {
-  transform: translate(2px, -2px);
-}
+/* =========================================
+   BOTTOM REGISTRATION NOTE
+   ========================================= */
 
 .training-tracks__note {
   display: flex;
   align-items: center;
   gap: 17px;
+
   margin-top: 30px;
   padding: 23px 26px;
-  border: 1px solid #DCE5F0;
-  border-radius: 16px;
-  background: #F4F7FB;
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.56);
+
+  box-shadow:
+    0 8px 28px rgba(20, 43, 74, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
+  backdrop-filter: blur(16px) saturate(145%);
 }
 
 .training-tracks__note-icon {
@@ -254,8 +424,11 @@
   height: 43px;
   flex-shrink: 0;
   place-items: center;
-  border-radius: 12px;
-  background: #EAF1FF;
+
+  border: 1px solid rgba(52, 120, 246, 0.12);
+  border-radius: 13px;
+
+  background: rgba(52, 120, 246, 0.09);
   color: var(--tracks-green);
 }
 
@@ -264,7 +437,9 @@
   flex: 1;
   flex-direction: column;
   gap: 5px;
+
   margin: 0;
+
   color: var(--tracks-muted);
   font-size: 12px;
   line-height: 1.7;
@@ -273,6 +448,7 @@
 .training-tracks__note p strong {
   color: var(--tracks-ink);
   font-size: 13px;
+  font-weight: 750;
 }
 
 .training-tracks__cta {
@@ -281,15 +457,36 @@
   justify-content: center;
   gap: 8px;
   flex-shrink: 0;
+
+  padding: 12px 16px;
+  border: 1px solid rgba(52, 120, 246, 0.16);
+  border-radius: 11px;
+
+  background: rgba(52, 120, 246, 0.07);
   color: var(--tracks-green);
+
   font-size: 12px;
   font-weight: 750;
   text-decoration: none;
+
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
 }
 
 .training-tracks__cta:hover {
-  color: var(--tracks-green-dark);
+  transform: translateY(-2px);
+
+  border-color: var(--tracks-green);
+  background: var(--tracks-green);
+  color: #FFFFFF;
 }
+
+/* =========================================
+   TABLET
+   ========================================= */
 
 @media (max-width: 1050px) {
   .training-tracks,
@@ -309,6 +506,10 @@
   }
 }
 
+/* =========================================
+   MOBILE
+   ========================================= */
+
 @media (max-width: 600px) {
   .training-tracks,
   .training-tracks.section-padding {
@@ -317,6 +518,11 @@
 
   .training-tracks__heading {
     margin-bottom: 29px;
+  }
+
+  .training-tracks__eyebrow {
+    font-size: 10px;
+    letter-spacing: 1.7px;
   }
 
   .training-tracks__heading h2 {
@@ -330,13 +536,18 @@
     line-height: 1.8;
   }
 
+  .training-tracks__count {
+    padding: 10px 13px;
+  }
+
   .training-tracks__grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 14px;
+    gap: 15px;
   }
 
   .training-card {
-    padding: 22px 20px 19px;
+    padding: 22px 20px 21px;
+    border-radius: 18px;
   }
 
   .training-card__top {
@@ -349,6 +560,12 @@
 
   .training-card__content p {
     font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .training-card__skills {
+    gap: 8px;
+    margin-top: 18px;
   }
 
   .training-card__skills span {
@@ -359,6 +576,8 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 13px;
+
+    margin-top: 22px;
     padding: 19px;
   }
 
@@ -366,20 +585,69 @@
     min-width: 0;
   }
 
+  .training-tracks__note p strong {
+    font-size: 13px;
+  }
+
+  .training-tracks__note p span {
+    font-size: 12px;
+  }
+
   .training-tracks__cta {
     margin-left: 56px;
+    padding: 11px 13px;
   }
 }
 
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 380px) {
+  .training-tracks,
+  .training-tracks.section-padding {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .training-card {
+    padding: 19px 17px;
+  }
+
+  .training-card__content h3 {
+    font-size: 17px;
+  }
+
+  .training-card__skills span {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .training-tracks__note {
+    padding: 16px;
+  }
+
+  .training-tracks__cta {
+    margin-left: 0;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
 @media (prefers-reduced-motion: reduce) {
   .training-card,
+  .training-card::before,
   .training-card__icon,
-  .training-card__link,
-  .training-card__link svg {
+  .training-card__skills span,
+  .training-tracks__cta {
     transition: none;
   }
 
-  .training-card:hover {
+  .training-card:hover,
+  .training-card__icon:hover,
+  .training-tracks__cta:hover {
     transform: none;
   }
 }
