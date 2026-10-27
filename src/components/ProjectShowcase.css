@@ -603,26 +603,62 @@
     font-size: 11px;
   }
 
+  /* Footer: icon and text share a row */
   .project-showcase__footer {
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 13px;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 12px;
+    row-gap: 16px;
 
     margin-top: 22px;
     padding: 19px;
+    border-radius: 16px;
+  }
+
+  .project-showcase__footer-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .project-showcase__footer-copy {
-    flex-basis: calc(100% - 60px);
+    width: 100%;
+    min-width: 0;
+    flex: initial;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .project-showcase__footer-copy h3 {
+    margin: 0 0 7px;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
   }
 
   .project-showcase__footer-copy p {
-    font-size: 12px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: break-word;
   }
 
+  /* Button sits below the text, aligned to the card */
   .project-showcase__cta {
-    margin-left: 58px;
-    padding: 11px 13px;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+
+    margin: 0;
+    max-width: 100%;
+    padding: 11px 14px;
+
+    font-size: 12px;
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -650,11 +686,30 @@
   }
 
   .project-showcase__footer {
-    padding: 16px;
+    grid-template-columns: 34px minmax(0, 1fr);
+    column-gap: 10px;
+    padding: 15px;
+  }
+
+  .project-showcase__footer-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .project-showcase__footer-copy h3 {
+    font-size: 13px;
+  }
+
+  .project-showcase__footer-copy p {
+    font-size: 12px;
+    line-height: 1.7;
   }
 
   .project-showcase__cta {
-    margin-left: 0;
+    margin: 0;
+    justify-self: start;
+    padding: 10px 12px;
+    font-size: 11px;
   }
 }
 

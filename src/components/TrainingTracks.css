@@ -2,7 +2,7 @@
 /* =========================================
    AV_eSAFE — TRAINING TRACKS
    Blue Glassmorphism Theme
-   ========================================= */
+========================================= */
 
 .training-tracks,
 .training-tracks.section-padding {
@@ -44,7 +44,7 @@
 
 /* =========================================
    SECTION HEADING
-   ========================================= */
+========================================= */
 
 .training-tracks__heading {
   margin-bottom: 42px;
@@ -126,7 +126,7 @@
 
 /* =========================================
    TRAINING CARDS GRID
-   ========================================= */
+========================================= */
 
 .training-tracks__grid {
   display: grid;
@@ -136,7 +136,7 @@
 
 /* =========================================
    GLASS CARD
-   ========================================= */
+========================================= */
 
 .training-card {
   position: relative;
@@ -169,6 +169,7 @@
 }
 
 /* Ambient blue glow */
+
 .training-card::before {
   content: "";
   position: absolute;
@@ -188,11 +189,11 @@
   );
 
   pointer-events: none;
-
   transition: transform 350ms ease;
 }
 
 /* Inner glass highlight */
+
 .training-card::after {
   content: "";
   position: absolute;
@@ -222,7 +223,7 @@
 
 /* =========================================
    FEATURED AI CARD
-   ========================================= */
+========================================= */
 
 .training-card--featured {
   border-color: rgba(113, 145, 255, 0.4);
@@ -250,6 +251,7 @@
 
 .training-card--featured:hover {
   border-color: rgba(90, 116, 245, 0.5);
+
   background: linear-gradient(
     145deg,
     rgba(226, 236, 255, 0.96),
@@ -259,7 +261,7 @@
 
 /* =========================================
    CARD HEADER
-   ========================================= */
+========================================= */
 
 .training-card__top {
   display: flex;
@@ -308,7 +310,7 @@
 
 /* =========================================
    CARD CONTENT
-   ========================================= */
+========================================= */
 
 .training-card__content {
   flex: 1;
@@ -351,7 +353,7 @@
 
 /* =========================================
    SKILL CHIPS
-   ========================================= */
+========================================= */
 
 .training-card__skills {
   display: flex;
@@ -387,15 +389,15 @@
   background: rgba(255, 255, 255, 0.78);
 }
 
-/* Old card link removed from JSX.
-   Keep no visible link or divider at the card bottom. */
+/* Old card link removed from JSX */
+
 .training-card__link {
   display: none;
 }
 
 /* =========================================
    BOTTOM REGISTRATION NOTE
-   ========================================= */
+========================================= */
 
 .training-tracks__note {
   display: flex;
@@ -438,6 +440,7 @@
   flex-direction: column;
   gap: 5px;
 
+  min-width: 0;
   margin: 0;
 
   color: var(--tracks-muted);
@@ -486,7 +489,7 @@
 
 /* =========================================
    TABLET
-   ========================================= */
+========================================= */
 
 @media (max-width: 1050px) {
   .training-tracks,
@@ -508,7 +511,7 @@
 
 /* =========================================
    MOBILE
-   ========================================= */
+========================================= */
 
 @media (max-width: 600px) {
   .training-tracks,
@@ -572,36 +575,78 @@
     font-size: 11px;
   }
 
+  /* Registration note: icon and text on one row */
   .training-tracks__note {
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 13px;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 12px;
+    row-gap: 16px;
 
     margin-top: 22px;
     padding: 19px;
+    border-radius: 16px;
+  }
+
+  .training-tracks__note-icon {
+    grid-column: 1;
+    grid-row: 1;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
   }
 
   .training-tracks__note p {
+    grid-column: 2;
+    grid-row: 1;
+
+    width: 100%;
     min-width: 0;
+    margin: 0;
+    flex: initial;
+    gap: 6px;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 
   .training-tracks__note p strong {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .training-tracks__note p span {
     font-size: 12px;
+    line-height: 1.7;
   }
 
+  /* CTA moves to its own row */
   .training-tracks__cta {
-    margin-left: 56px;
-    padding: 11px 13px;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+
+    width: auto;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0;
+    padding: 11px 14px;
+
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    white-space: normal;
   }
 }
 
 /* =========================================
    SMALL MOBILE
-   ========================================= */
+========================================= */
 
 @media (max-width: 380px) {
   .training-tracks,
@@ -624,17 +669,45 @@
   }
 
   .training-tracks__note {
-    padding: 16px;
+    grid-template-columns: 34px minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 14px;
+
+    padding: 15px;
+  }
+
+  .training-tracks__note-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .training-tracks__note p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .training-tracks__note p strong {
+    font-size: 13px;
+  }
+
+  .training-tracks__note p span {
+    font-size: 12px;
   }
 
   .training-tracks__cta {
-    margin-left: 0;
+    grid-column: 1 / -1;
+    margin: 0;
+    justify-self: start;
+
+    max-width: 100%;
+    padding: 10px 12px;
+    font-size: 11px;
   }
 }
 
 /* =========================================
    ACCESSIBILITY
-   ========================================= */
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .training-card,
