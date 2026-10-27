@@ -25,6 +25,7 @@ import StudentBenefits from "./components/StudentBenefits";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ApplySection from "./components/ApplySection";
 
 import {
   BrowserRouter,
@@ -36,10 +37,6 @@ import {
 import Founder from "./pages/Founder";
 import About from "./pages/About";
 
-
-
-
-const PROGRAM_FEE = 1299;
 
 const programFeatures = [
   {
@@ -104,11 +101,7 @@ const faqs = [
     answer:
       "No. Av_eSAFE provides training and placement support, not guaranteed employment. Hiring decisions depend on your skills, performance, available opportunities, and employer requirements.",
   },
-  {
-    question: "What is included in the ₹1,299 program fee?",
-    answer:
-      "The proposed fee covers the program's defined training and career-preparation services. The final inclusions, duration, batch schedule, and any additional charges will be disclosed before payment.",
-  },
+    
   {
     question: "Will I work on real-world or AI projects?",
     answer:
@@ -172,7 +165,7 @@ function Hero() {
           </h1>
 
           <p className="hero-description">
-            From Classrooms to Careers, Turn Dreams into Reality.<br/>
+            From Classrooms to Careers, Turn Dreams into Reality.<br />
             Build Skills, Create Projects, and Rise to New Possibilities.
             Learn Today, Lead Tomorrow, and Make Every Opportunity Count.
             Your Journey from Learning to Placement Success Begins with AV eSAFE.
@@ -514,13 +507,10 @@ function PricingSection() {
           </div>
 
           <div className="pricing-amount">
-            <span className="currency">₹</span>
-            <span>{PROGRAM_FEE.toLocaleString("en-IN")}</span>
+            
           </div>
 
           <p className="pricing-subtitle">Per student · Proposed fee</p>
-
-          <div className="pricing-divider" />
 
           <p className="pricing-includes-title">Designed to include</p>
           <ul className="pricing-list">
@@ -775,412 +765,6 @@ const indianColleges = [
   return a.localeCompare(b);
 });
 
-function ApplySection() {
-  const [collegeChoice, setCollegeChoice] = useState("");
-  const [otherCollege, setOtherCollege] = useState("");
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    college: "",
-    currentCity: "",
-    track: "",
-    currentStatus: "",
-    goals: "",
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  function handleChange(event) {
-    const { name, value } = event.target;
-
-    setFormData((current) => ({
-      ...current,
-      [name]: value,
-    }));
-
-    setErrorMessage("");
-  }
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    if (submitting) return;
-
-    setSubmitting(true);
-    setErrorMessage("");
-
-    try {
-      const response = await fetch(
-        "https://api.web3forms.com/submit",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            access_key: "b47e9ccd-f83c-403b-96ad-63097d6ff4bb",
-            subject: "New Av_eSAFE Training Application",
-            from_name: "Av_eSAFE Training Website",
-
-            "Full Name": formData.fullName,
-            "Email Address": formData.email,
-            "Phone Number": formData.phone,
-            "College / University": formData.college || "Not provided",
-            "Current City": formData.currentCity || "Not provided",
-            "Interested Training Track": formData.track,
-            "Current Status": formData.currentStatus,
-            "Goals": formData.goals.trim() || "Not provided",
-          }),
-        }
-      );
-
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        throw new Error(
-          result.message || "Unable to submit your application."
-        );
-      }
-
-      setSubmitted(true);
-    } catch (error) {
-      console.error("Web3Forms error:", error);
-
-      setErrorMessage(
-        error.message ||
-        "Something went wrong. Please try again."
-      );
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
-  return (
-    <section className="apply-section" id="apply">
-      <div className="container">
-        <div className="apply-card application-card">
-          <div className="apply-decoration apply-decoration-one" />
-          <div className="apply-decoration apply-decoration-two" />
-
-          <div className="apply-content application-intro">
-            <span className="apply-eyebrow">
-              <Sparkles size={15} /> YOUR NEXT STEP STARTS HERE
-            </span>
-
-            <h2>
-              Ready to build skills
-              <br /> that move you forward?
-            </h2>
-
-            <p>
-              Tell us a little about yourself and the training you are
-              interested in. The details will help us understand your goals
-              and discuss the program with you.
-            </p>
-
-            <div className="application-points">
-              <span>
-                <Check size={17} /> Practical, project-based learning
-              </span>
-              <span>
-                <Check size={17} /> Resume and interview preparation
-              </span>
-              <span>
-                <Check size={17} /> Guidance on your next career step
-              </span>
-            </div>
-
-            <span className="apply-note">
-              Training and placement support. No job guarantee.
-            </span>
-          </div>
-
-          <div className="application-form-wrap">
-            {submitted ? (
-              <div
-                className="application-success"
-                role="status"
-                aria-live="polite"
-              >
-                <span className="application-success-icon">
-                  <Check size={28} />
-                </span>
-
-                <h3>
-                  Thank you, {formData.fullName.split(" ")[0]}!
-                </h3>
-
-                <p>
-                  Your application has been submitted successfully.
-                  Our team has received your details and will contact
-                  you using the information you provided.
-                </p>
-
-                <button
-                  className="button button-primary"
-                  type="button"
-                  onClick={() => {
-                    setFormData({
-                      fullName: "",
-                      email: "",
-                      phone: "",
-                      track: "",
-                      currentStatus: "",
-                      goals: "",
-                    });
-                    setSubmitted(false);
-                    setErrorMessage("");
-                  }}
-                >
-                  Submit another application
-                  <ArrowRight size={17} />
-                </button>
-              </div>
-            ) : (
-              <form
-                className="application-form"
-                onSubmit={handleSubmit}
-              >
-                <div className="application-form-heading">
-                  <span>APPLICATION FORM</span>
-                  <h3>Let’s get to know you.</h3>
-                  <p>Fields marked * are required.</p>
-                </div>
-
-                <div className="application-field-grid">
-                  <label className="application-field">
-                    <span>Full name *</span>
-                    <input
-                      type="text"
-                      name="fullName"
-                      autoComplete="name"
-                      placeholder="Enter your full name"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      required
-                      minLength={2}
-                    />
-                  </label>
-
-                  <label className="application-field">
-                    <span>Email address *</span>
-                    <input
-                      type="email"
-                      name="email"
-                      autoComplete="email"
-                      placeholder="you@example.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </label>
-
-                  <label className="application-field">
-                    <span>Phone number *</span>
-                    <input
-                      type="tel"
-                      name="phone"
-                      autoComplete="tel"
-                      placeholder="Enter your phone number"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      minLength={10}
-                    />
-                  </label>
-
-                  <label className="application-field">
-                    <span>College / University Name *</span>
-
-                    <input
-                      type="text"
-                      name="college"
-                      list="college-suggestions"
-                      placeholder="Search or select your college"
-                      value={collegeChoice}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        setCollegeChoice(value);
-
-                        if (value === "Other") {
-                          setOtherCollege("");
-                          handleChange({
-                            target: {
-                              name: "college",
-                              value: ""
-                            }
-                          });
-                        } else {
-                          setOtherCollege("");
-                          handleChange({
-                            target: {
-                              name: "college",
-                              value: value
-                            }
-                          });
-                        }
-                      }}
-                      autoComplete="off"
-                      required
-                    />
-
-                    <datalist id="college-suggestions">
-                      {indianColleges.map((college) => (
-                        <option key={college} value={college} />
-                      ))}
-                    </datalist>
-
-                    {collegeChoice === "Other" && (
-                      <input
-                        type="text"
-                        name="otherCollege"
-                        placeholder="Enter your college or university name"
-                        value={otherCollege}
-                        onChange={(e) => {
-                          const value = e.target.value;
-                          setOtherCollege(value);
-
-                          handleChange({
-                            target: {
-                              name: "college",
-                              value: value
-                            }
-                          });
-                        }}
-                        required
-                      />
-                    )}
-                  </label>
-
-                </div>
-
-                <div className="application-field">
-                  <label className="application-field">
-                    <span>Current City *</span>
-                    <input
-                      type="text"
-                      name="currentCity"
-                      list="city-suggestions"
-                      placeholder="Search or enter your current city"
-                      value={formData.currentCity}
-                      onChange={handleChange}
-                      autoComplete="off"
-                      required
-                    />
-
-                    <datalist id="city-suggestions">
-                      {indianCities.map((city) => (
-                        <option key={city} value={city} />
-                      ))}
-                    </datalist>
-                  </label>
-
-                  <label className="application-field">
-                    <span>Interested training track *</span>
-                    <select
-                      name="track"
-                      value={formData.track}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="">Choose a track</option>
-                      <option value="Web Development">
-                        Web Development
-                      </option>
-                      <option value="Java Programming">
-                        Java Programming
-                      </option>
-                      <option value="Python Programming">
-                        Python Programming
-                      </option>
-                      <option value="SQL and Database">
-                        SQL and Database
-                      </option>
-                      <option value="Software Testing">
-                        Software Testing
-                      </option>
-                      <option value="AI and Generative AI">
-                        AI and Generative AI
-                      </option>
-                      <option value="Not sure yet">
-                        Not sure yet
-                      </option>
-                    </select>
-                  </label>
-
-                  <label className="application-field application-field-full">
-                    <span>Current status *</span>
-                    <select
-                      name="currentStatus"
-                      value={formData.currentStatus}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="">
-                        Choose your current status
-                      </option>
-                      <option value="Student">Student</option>
-                      <option value="Recent graduate">
-                        Recent graduate
-                      </option>
-                      <option value="Working professional">
-                        Working professional
-                      </option>
-                      <option value="Career switcher">
-                        Looking to switch careers
-                      </option>
-                    </select>
-                  </label>
-
-                  <label className="application-field application-field-full">
-                    <span>Your goals (optional)</span>
-                    <textarea
-                      name="goals"
-                      placeholder="Tell us what you want to learn or achieve"
-                      value={formData.goals}
-                      onChange={handleChange}
-                      rows={3}
-                    />
-                  </label>
-                </div>
-
-                {errorMessage && (
-                  <p
-                    className="application-error"
-                    role="alert"
-                    aria-live="polite"
-                  >
-                    {errorMessage}
-                  </p>
-                )}
-
-                <button
-                  className="button button-primary application-submit"
-                  type="submit"
-                  disabled={submitting}
-                >
-                  {submitting
-                    ? "Submitting..."
-                    : "Submit application"}
-                  {!submitting && <ArrowRight size={18} />}
-                </button>
-
-                <p className="application-privacy-note">
-                  Your information should only be collected and handled
-                  in accordance with Av_eSAFE’s privacy practices.
-                </p>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 
 function LandingPage() {
@@ -1198,7 +782,10 @@ function LandingPage() {
         <ProcessSection />
         <PricingSection />
         <FAQSection />
-        <ApplySection />
+        <ApplySection
+          indianCities={indianCities}
+          indianColleges={indianColleges}
+        />
       </main>
     </>
   );

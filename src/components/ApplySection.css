@@ -1,0 +1,503 @@
+/* Main application section */
+.apply-section {
+  background: #ffffff;
+  color: #172b4d;
+  padding: 72px 24px;
+}
+
+/* Main two-column container */
+.apply-section .apply-container {
+  background: linear-gradient(135deg, #f8fbff 0%, #edf4ff 100%);
+  border: 1px solid #e0eaff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(28, 74, 140, 0.08);
+}
+
+/* Left content section */
+.apply-section .apply-content {
+  background: linear-gradient(145deg, #173b70 0%, #2459a6 100%);
+  color: #ffffff;
+  padding: 48px;
+}
+
+.apply-section .apply-content h1,
+.apply-section .apply-content h2,
+.apply-section .apply-content h3 {
+  color: #ffffff;
+}
+
+.apply-section .apply-content p {
+  color: #e1eaff;
+  line-height: 1.8;
+}
+
+/* Right form section */
+.apply-section .apply-form {
+  background: #ffffff;
+  color: #172b4d;
+  padding: 36px;
+}
+
+.apply-section .apply-form h2 {
+  color: #172b4d;
+}
+
+.apply-section .apply-form p {
+  color: #64748b;
+}
+
+/* Labels */
+.apply-section label {
+  color: #334155;
+  font-weight: 600;
+}
+
+/* Inputs, dropdowns and text areas */
+.apply-section input,
+.apply-section select,
+.apply-section textarea {
+  background: #ffffff;
+  color: #172b4d;
+  border: 1px solid #d5deeb;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.apply-section input::placeholder,
+.apply-section textarea::placeholder {
+  color: #94a3b8;
+}
+
+.apply-section input:focus,
+.apply-section select:focus,
+.apply-section textarea:focus {
+  outline: none;
+  border-color: #3478f6;
+  box-shadow: 0 0 0 3px rgba(52, 120, 246, 0.12);
+}
+
+/* Buttons */
+.apply-section button {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.apply-section button[type="submit"] {
+  background: #2868e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+}
+
+.apply-section button[type="submit"]:hover {
+  background: #1955cc;
+  transform: translateY(-1px);
+}
+
+/* Course selection button */
+.apply-section .course-selector {
+  background: #f8fbff;
+  color: #173b70;
+  border: 1px solid #d5e3ff;
+  border-radius: 10px;
+}
+
+.apply-section .course-selector:hover {
+  background: #edf4ff;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  .apply-section {
+    padding: 32px 16px;
+  }
+
+  .apply-section .apply-content,
+  .apply-section .apply-form {
+    padding: 24px;
+  }
+
+  .apply-section .apply-container {
+    border-radius: 18px;
+  }
+}
+/* =========================================
+   AV_eSAFE APPLY SECTION — DESIGN REFINEMENT
+   ========================================= */
+
+.apply-section {
+  background: #ffffff;
+  padding: 56px 24px;
+}
+
+.apply-section .apply-container {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: stretch;
+  max-width: 1240px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #e3eaf5;
+  border-radius: 24px;
+  background: #f8faff;
+  box-shadow: 0 20px 60px rgba(20, 54, 105, 0.10);
+}
+
+/* Left blue panel */
+.apply-section .apply-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 48px;
+  background: linear-gradient(145deg, #17365f 0%, #2456a0 100%);
+  color: #ffffff;
+}
+
+.apply-section .apply-content h1 {
+  max-width: 480px;
+  margin: 20px 0 16px;
+  font-size: clamp(2.2rem, 3.2vw, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.apply-section .apply-content p {
+  max-width: 440px;
+  line-height: 1.8;
+}
+
+/* Right form panel */
+.apply-section .apply-form {
+  min-width: 0;
+  padding: 36px 32px;
+  background: #ffffff;
+  border: 1px solid #edf1f8;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(30, 64, 120, 0.08);
+}
+
+/* Form heading */
+.apply-section .apply-form h2 {
+  margin: 0 0 8px;
+  color: #172f50;
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.apply-section .apply-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #34445d;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Consistent form control sizing */
+.apply-section .apply-form input,
+.apply-section .apply-form select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #172f50;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apply-section .apply-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 112px;
+  padding: 14px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #172f50;
+  font: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.apply-section .apply-form input::placeholder,
+.apply-section .apply-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.apply-section .apply-form input:focus,
+.apply-section .apply-form select:focus,
+.apply-section .apply-form textarea:focus {
+  outline: none;
+  border-color: #3478f6;
+  box-shadow: 0 0 0 3px rgba(52, 120, 246, 0.12);
+}
+
+/* Ensure form rows and columns align consistently.
+   These rules work when the form fields are inside a grid container. */
+.apply-section .apply-form form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  column-gap: 16px;
+  row-gap: 18px;
+}
+
+.apply-section .apply-form form > * {
+  min-width: 0;
+}
+
+/* Full-width fields and form actions */
+.apply-section .apply-form textarea,
+.apply-section .apply-form button[type="submit"] {
+  grid-column: 1 / -1;
+}
+
+/* Course selector */
+.apply-section .course-selector {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 72px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #f8fbff;
+  color: #173b70;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.apply-section .course-selector:hover {
+  border-color: #8eb5ff;
+  background: #eff6ff;
+}
+
+/* Submit button */
+.apply-section .apply-form button[type="submit"] {
+  min-height: 50px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #2868e8;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.apply-section .apply-form button[type="submit"]:hover {
+  background: #1955cc;
+  transform: translateY(-1px);
+}
+
+/* Tablet and mobile */
+@media (max-width: 900px) {
+  .apply-section {
+    padding: 36px 18px;
+  }
+
+  .apply-section .apply-container {
+    grid-template-columns: 1fr;
+  }
+
+  .apply-section .apply-content {
+    padding: 40px 32px;
+  }
+
+  .apply-section .apply-content h1 {
+    max-width: 600px;
+    font-size: 2.5rem;
+  }
+
+  .apply-section .apply-form {
+    padding: 30px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .apply-section {
+    padding: 24px 12px;
+  }
+
+  .apply-section .apply-content {
+    padding: 32px 22px;
+  }
+
+  .apply-section .apply-content h1 {
+    font-size: 2rem;
+    letter-spacing: -0.8px;
+  }
+
+  .apply-section .apply-form {
+    padding: 24px 18px;
+  }
+
+  .apply-section .apply-form form {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 16px;
+  }
+
+  .apply-section .apply-form textarea,
+  .apply-section .apply-form button[type="submit"] {
+    grid-column: 1;
+  }
+}
+/* ===== Improved Form Field Alignment ===== */
+
+.apply-section .apply-form form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 18px;
+  align-items: start;
+}
+
+/* Prevent fields from overflowing their columns */
+.apply-section .apply-form form > * {
+  min-width: 0;
+}
+
+/* Keep each label and its control together */
+.apply-section .apply-form form > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Make input controls consistently sized */
+.apply-section .apply-form input,
+.apply-section .apply-form select {
+  width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+/* Consistent course selector height */
+.apply-section .course-selector {
+  width: 100%;
+  min-height: 72px;
+  box-sizing: border-box;
+}
+
+/* Goals field spans both columns */
+.apply-section .apply-form textarea {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 112px;
+  box-sizing: border-box;
+}
+
+/* Submit button spans both columns */
+.apply-section .apply-form button[type="submit"] {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* Mobile: stack all fields vertically */
+@media (max-width: 520px) {
+  .apply-section .apply-form form {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 16px;
+  }
+
+  .apply-section .apply-form textarea,
+  .apply-section .apply-form button[type="submit"] {
+    grid-column: 1;
+  }
+}
+
+/* ===== Correct application form layout ===== */
+
+.apply-section .application-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 18px;
+  align-items: start;
+}
+
+.apply-section .application-field-grid > .application-field {
+  grid-column: auto;
+  grid-row: auto;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Current city — left column */
+.apply-section .application-field-grid > .application-field:nth-child(5) {
+  grid-column: 1;
+}
+
+/* Current status — right column, same row as city */
+.apply-section .application-field-grid > .application-field:nth-child(6) {
+  grid-column: 2;
+}
+
+/* Interested training track — full width */
+.apply-section .application-field-grid > .application-field:nth-child(7) {
+  grid-column: 1 / -1;
+}
+
+/* Goals — full width */
+.apply-section .application-field-grid > .application-field:nth-child(8) {
+  grid-column: 1 / -1;
+}
+
+/* Consistent control sizing */
+.apply-section .application-field-grid input,
+.apply-section .application-field-grid select {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+/* Course selector */
+.apply-section .course-picker-trigger {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile layout */
+@media (max-width: 520px) {
+  .apply-section .application-field-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .apply-section .application-field-grid > .application-field {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+}
+
+/* Hide scrollbar inside the course selection popup */
+.course-modal,
+.course-modal-content,
+.course-modal-body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Chrome, Edge, Safari */
+.course-modal::-webkit-scrollbar,
+.course-modal-content::-webkit-scrollbar,
+.course-modal-body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
