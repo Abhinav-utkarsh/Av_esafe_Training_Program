@@ -1,4 +1,6 @@
 
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   FileText,
   MessageSquare,
@@ -8,6 +10,9 @@ import {
   Award,
   ArrowUpRight,
   CheckCircle2,
+  X,
+  ArrowRight,
+  Sparkles,
 } from "lucide-react";
 
 import "./StudentBenefits.css";
@@ -16,140 +21,289 @@ const benefits = [
   {
     number: "01",
     title: "Personalized Resume Building",
-    description:
-      "Improve your resume structure, highlight relevant skills, and present your projects and experience clearly.",
+    shortDescription:
+      "Create a professional resume that highlights your skills and projects.",
+    details:
+      "Build a professional resume that presents your skills, academic background, projects, certifications, and achievements clearly. Learn how to showcase your strengths so recruiters can better understand your potential.",
+    points: [
+      "Professional resume structure and formatting",
+      "Highlight relevant technical skills and projects",
+      "Improve your profile for entry-level opportunities",
+      "Present your achievements effectively",
+    ],
     icon: FileText,
-    tags: ["Resume review", "Project highlights"],
+    tag: "Career Essentials",
   },
   {
     number: "02",
     title: "Technical Interview Practice",
-    description:
-      "Strengthen your fundamentals and practise explaining technical concepts, coding tasks, and project decisions.",
+    shortDescription:
+      "Strengthen your fundamentals and practice technical questions.",
+    details:
+      "Prepare for technical interviews with focused practice on subjects relevant to your learning track. Strengthen your understanding of technical concepts and learn to explain your approach confidently.",
+    points: [
+      "Practice role-relevant technical questions",
+      "Strengthen programming and subject fundamentals",
+      "Explain solutions step by step",
+      "Identify areas for improvement",
+    ],
     icon: MessageSquare,
-    tags: ["Technical rounds", "Mock interviews"],
+    tag: "Interview Readiness",
   },
   {
     number: "03",
     title: "Managerial & HR Preparation",
-    description:
-      "Prepare for behavioral questions, teamwork scenarios, communication, and common HR interview discussions.",
+    shortDescription:
+      "Prepare for HR discussions, behavioral questions, and workplace scenarios.",
+    details:
+      "Get familiar with common HR and managerial interview questions. Learn to structure your answers, communicate your experiences, discuss your strengths, and approach workplace scenarios professionally.",
+    points: [
+      "Practice common HR interview questions",
+      "Learn the STAR method for behavioral answers",
+      "Improve professional communication",
+      "Prepare for situational questions",
+    ],
     icon: Users,
-    tags: ["Behavioral questions", "HR preparation"],
+    tag: "Communication",
   },
   {
     number: "04",
     title: "Practical Project Experience",
-    description:
-      "Apply your learning through guided development projects, including opportunities to explore AI-based applications.",
+    shortDescription:
+      "Apply what you learn through practical tasks and project activities.",
+    details:
+      "Move beyond theory by applying your knowledge to practical assignments and projects. Understand how concepts work in real development scenarios and learn to present your work during interviews.",
+    points: [
+      "Apply concepts through hands-on activities",
+      "Build projects relevant to your learning track",
+      "Develop debugging and problem-solving skills",
+      "Explain project decisions in interviews",
+    ],
     icon: BrainCircuit,
-    tags: ["Hands-on practice", "AI project concepts"],
+    tag: "Learn by Doing",
   },
   {
     number: "05",
     title: "Mentor Guidance",
-    description:
-      "Get structured guidance as you learn, work through challenges, and improve your technical and professional skills.",
+    shortDescription:
+      "Get direction on learning priorities, career preparation, and next steps.",
+    details:
+      "Get structured guidance to help you understand what to learn, where to focus, and how to prepare for your next career step. Mentorship is designed to bring clarity to your learning journey.",
+    points: [
+      "Guidance on learning priorities",
+      "Support with technical preparation",
+      "Suggestions for improving projects and profiles",
+      "Direction for your career preparation",
+    ],
     icon: GraduationCap,
-    tags: ["Guided learning", "Skill development"],
+    tag: "Guided Learning",
   },
   {
     number: "06",
     title: "Achievement & Recognition",
-    description:
-      "Receive a training completion certificate subject to program requirements. The top five performers may be eligible for a Letter of Recommendation under published criteria.",
+    shortDescription:
+      "Showcase your learning progress and eligible achievements.",
+    details:
+      "Build confidence by tracking your progress and showcasing your completed work. Eligible participants may receive certificates or other recognition based on the program's published requirements.",
+    points: [
+      "Track learning and completed activities",
+      "Showcase relevant projects and achievements",
+      "Build evidence of your learning journey",
+      "Understand applicable recognition criteria",
+    ],
     icon: Award,
-    tags: ["Completion criteria", "Merit-based recognition"],
+    tag: "Celebrate Progress",
   },
 ];
 
-function StudentBenefits() {
-  return (
-    <section
-      className="student-benefits"
-      id="benefits"
-      aria-labelledby="student-benefits-title"
-    >
-      <div className="student-benefits__container">
-        <div className="student-benefits__eyebrow">
-          <span />
-          MORE VALUE FOR YOUR NEXT STEP
-        </div>
+export default function StudentBenefits() {
+  const [activeBenefit, setActiveBenefit] = useState(null);
 
-        <div className="student-benefits__heading">
-          <div className="student-benefits__heading-copy">
-            <h2 id="student-benefits-title">
-              More than training.
-              <span> Support that moves you forward.</span>
+  const closeModal = () => setActiveBenefit(null);
+
+  useEffect(() => {
+    if (!activeBenefit) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.classList.add("student-benefit-modal-open");
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setActiveBenefit(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.classList.remove("student-benefit-modal-open");
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [activeBenefit]);
+
+  return (
+    <>
+      <section className="student-benefits-section" id="student-benefits">
+        <div className="student-benefits-container">
+          <div className="student-benefits-heading">
+            <span className="student-benefits-eyebrow">
+              <Sparkles size={15} />
+              YOUR GROWTH, OUR PRIORITY
+            </span>
+
+            <h2>
+              More Than Learning.
+              <span>A Step Toward Your Career.</span>
             </h2>
 
             <p>
-              Build practical skills, communicate your strengths, and prepare
-              for career opportunities with structured guidance and practice.
+              Build practical skills, improve your confidence, and prepare for
+              your next opportunity with support designed around your growth.
             </p>
           </div>
 
-          <a className="student-benefits__top-link" href="#apply">
-            Start your journey
-            <ArrowUpRight size={17} aria-hidden="true" />
-          </a>
-        </div>
+          <div className="student-benefits-grid">
+            {benefits.map((benefit) => {
+              const Icon = benefit.icon;
 
-        <div className="student-benefits__grid">
-          {benefits.map((benefit) => {
-            const Icon = benefit.icon;
+              return (
+                <article
+                  key={benefit.number}
+                  className="student-benefit-card"
+                  role="button"
+                  tabIndex={0}
+                  aria-haspopup="dialog"
+                  aria-label={`Learn more about ${benefit.title}`}
+                  onClick={() => setActiveBenefit(benefit)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setActiveBenefit(benefit);
+                    }
+                  }}
+                >
+                  <div className="student-benefit-card-top">
+                    <div className="student-benefit-icon">
+                      <Icon size={25} strokeWidth={1.8} />
+                    </div>
 
-            return (
-              <article
-                className="student-benefit-card"
-                key={benefit.number}
-              >
-                <div className="student-benefit-card__top">
-                  <div className="student-benefit-card__icon">
-                    <Icon size={23} strokeWidth={1.8} aria-hidden="true" />
+                    <span className="student-benefit-number">
+                      {benefit.number}
+                    </span>
                   </div>
 
-                  <span>{benefit.number}</span>
-                </div>
+                  <span className="student-benefit-tag">{benefit.tag}</span>
 
-                <h3>{benefit.title}</h3>
+                  <h3>{benefit.title}</h3>
 
-                <p>{benefit.description}</p>
+                  <p>{benefit.shortDescription}</p>
 
-                <div className="student-benefit-card__tags">
-                  {benefit.tags.map((tag) => (
-                    <span key={tag}>
-                      <CheckCircle2 size={13} aria-hidden="true" />
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        <div className="student-benefits__note">
-          <div className="student-benefits__note-icon">
-            <GraduationCap size={23} aria-hidden="true" />
+                  <div className="student-benefit-card-link">
+                    Explore benefit
+                    <ArrowUpRight size={17} />
+                  </div>
+                </article>
+              );
+            })}
           </div>
 
-          <div>
-            <h3>Prepare with confidence. Progress with purpose.</h3>
-            <p>
-              Av_eSAFE provides training and placement support. Participation
-              does not guarantee a job, internship, or placement.
-            </p>
-          </div>
+          <div className="student-benefits-footer">
+            <div className="student-benefits-footer-icon">
+              <GraduationCap size={25} />
+            </div>
 
-          <a href="#apply" aria-label="Enquire about the program">
-            Enquire now
-            <ArrowUpRight size={17} aria-hidden="true" />
-          </a>
+            <div className="student-benefits-footer-text">
+              <h3>Your journey. Your skills. Your next opportunity.</h3>
+              <p>
+                Take the next step toward becoming career-ready with Av_eSAFE.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {activeBenefit &&
+        createPortal(
+          <div
+            className="student-benefit-modal-backdrop"
+            onClick={closeModal}
+          >
+            <section
+              className="student-benefit-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="student-benefit-modal-title"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="student-benefit-modal-top">
+                <span className="student-benefit-modal-label">
+                  <Sparkles size={14} />
+                  AV_eSAFE STUDENT SUPPORT
+                </span>
+
+                <button
+                  type="button"
+                  className="student-benefit-modal__close"
+                  onClick={closeModal}
+                  aria-label="Close popup"
+                  autoFocus
+                >
+                  <X size={21} />
+                </button>
+              </div>
+
+              <div className="student-benefit-modal__icon">
+                {(() => {
+                  const Icon = activeBenefit.icon;
+                  return <Icon size={30} strokeWidth={1.8} />;
+                })()}
+              </div>
+
+              <span className="student-benefit-modal__eyebrow">
+                BENEFIT {activeBenefit.number} · {activeBenefit.tag}
+              </span>
+
+              <h2 id="student-benefit-modal-title">
+                {activeBenefit.title}
+              </h2>
+
+              <p className="student-benefit-modal__description">
+                {activeBenefit.details}
+              </p>
+
+              <div className="student-benefit-modal__points">
+                <h3>How this can help you</h3>
+
+                {activeBenefit.points.map((point) => (
+                  <div className="student-benefit-modal__point" key={point}>
+                    <CheckCircle2 size={19} aria-hidden="true" />
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+
+              {activeBenefit.number === "06" && (
+                <p className="student-benefit-modal__disclaimer">
+                  Certificates and other recognition are subject to the
+                  program's applicable requirements and published criteria.
+                </p>
+              )}
+
+              <button
+                type="button"
+                className="student-benefit-modal__done"
+                onClick={closeModal}
+              >
+                Got it
+                <ArrowRight size={17} />
+              </button>
+            </section>
+          </div>,
+          document.body
+        )}
+    </>
   );
 }
-
-export default StudentBenefits;

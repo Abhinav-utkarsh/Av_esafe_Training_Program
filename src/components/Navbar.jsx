@@ -1,12 +1,15 @@
 
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +27,30 @@ export default function Navbar() {
     };
   }, []);
 
+  // Scroll to the top of the home page
+  const handleHomeClick = (event) => {
+    setMenuOpen(false);
+
+    if (location.pathname === "/") {
+      event.preventDefault();
+
+      // If a URL hash is present, remove it
+      if (window.location.hash) {
+        navigate("/", { replace: true });
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const links = [
     { label: "Home", to: "/" },
     { label: "About Us", to: "/about" },
     { label: "Program", to: "/#tracks" },
-    { label: "How it works", to: "/#process" },
+    { label: "Our Mentors", to: "/mentors" },
     { label: "FAQs", to: "/#faq" },
   ];
 
@@ -43,7 +65,7 @@ export default function Navbar() {
           to="/"
           className="brand"
           aria-label="Av_eSAFE home"
-          onClick={closeMenu}
+          onClick={handleHomeClick}
         >
           <span className="brand-content">
             <img
@@ -78,7 +100,11 @@ export default function Navbar() {
             <Link
               key={link.to}
               to={link.to}
-              onClick={closeMenu}
+              onClick={
+                link.label === "Home"
+                  ? handleHomeClick
+                  : closeMenu
+              }
             >
               {link.label}
             </Link>

@@ -35,6 +35,7 @@ import {
 } from "react-router-dom";
 
 import Founder from "./pages/Founder";
+import OurMentors from "./pages/OurMentors";
 import About from "./pages/About";
 
 
@@ -844,6 +845,11 @@ function App() {
         <Route
           path="/about"
           element={<About />}
+        />
+
+        <Route
+          path="/mentors"
+          element={<OurMentors />}
         />
 
         <Route
