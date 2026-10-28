@@ -11,6 +11,7 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Update navbar appearance while scrolling
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
@@ -27,14 +28,13 @@ export default function Navbar() {
     };
   }, []);
 
-  // Scroll to the top of the home page
+  // Scroll to the top when Home/logo is clicked
   const handleHomeClick = (event) => {
     setMenuOpen(false);
 
     if (location.pathname === "/") {
       event.preventDefault();
 
-      // If a URL hash is present, remove it
       if (window.location.hash) {
         navigate("/", { replace: true });
       }
@@ -46,15 +46,45 @@ export default function Navbar() {
     }
   };
 
+  // Navigate to a section on the home page
+  const handleSectionClick = (event, sectionId) => {
+    event.preventDefault();
+    setMenuOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate(`/#${sectionId}`);
+      return;
+    }
+
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      // Keep the URL hash in sync
+      window.history.replaceState(null, "", `/#${sectionId}`);
+    } else {
+      navigate(`/#${sectionId}`);
+    }
+  };
+
   const links = [
     { label: "Home", to: "/" },
     { label: "About Us", to: "/about" },
-    { label: "Program", to: "/#tracks" },
+    { label: "Program", to: "/#tracks", sectionId: "tracks" },
     { label: "Our Mentors", to: "/mentors" },
-    { label: "FAQs", to: "/#faq" },
+    { label: "FAQs", to: "/#faq", sectionId: "faq" },
   ];
 
   const closeMenu = () => setMenuOpen(false);
+
+  // Navigate to Apply section from any page
+  const handleApplyClick = (event) => {
+    handleSectionClick(event, "apply");
+  };
 
   return (
     <header
@@ -98,13 +128,17 @@ export default function Navbar() {
         >
           {links.map((link) => (
             <Link
-              key={link.to}
+              key={link.label}
               to={link.to}
-              onClick={
-                link.label === "Home"
-                  ? handleHomeClick
-                  : closeMenu
-              }
+              onClick={(event) => {
+                if (link.label === "Home") {
+                  handleHomeClick(event);
+                } else if (link.sectionId) {
+                  handleSectionClick(event, link.sectionId);
+                } else {
+                  closeMenu();
+                }
+              }}
             >
               {link.label}
             </Link>
@@ -112,8 +146,8 @@ export default function Navbar() {
 
           <Link
             className="button button-primary nav-cta"
-            to="#apply"
-            onClick={closeMenu}
+            to="/#apply"
+            onClick={handleApplyClick}
           >
             Apply now <ArrowUpRight size={16} />
           </Link>
