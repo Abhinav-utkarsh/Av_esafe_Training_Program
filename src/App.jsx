@@ -6,10 +6,12 @@ import {
   BrainCircuit,
   BriefcaseBusiness,
   Check,
+  CheckCircle2,
   ChevronDown,
   Code2,
   GraduationCap,
   MessageCircle,
+  Plus,
   Sparkles,
   Target,
   Users,
@@ -521,7 +523,7 @@ function PricingSection() {
             <li><Check size={17} /> Technical and HR interview practice</li>
           </ul>
 
-          <a className="button button-primary pricing-button" href="#contact">
+          <a className="button button-primary pricing-button" href="#apply">
             Register your interest <ArrowRight size={17} />
           </a>
 
@@ -535,57 +537,118 @@ function PricingSection() {
   );
 }
 
+
 function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
     <section className="section faq-section" id="faq">
-      <div className="container faq-grid">
+      <div className="container faq-layout">
         <div className="faq-intro">
-          <SectionLabel>GOT QUESTIONS?</SectionLabel>
-          <h2>
-            Good questions.
+          <span className="faq-eyebrow">
+            <span className="faq-eyebrow-dot" />
+            YOUR QUESTIONS, ANSWERED
+          </span>
+
+          <h2 className="faq-heading">
+            Everything you need
             <br />
-            Clear answers.
+            to <span>get started.</span>
           </h2>
-          <p>
-            Everything you should know before taking your next step.
+
+          <p className="faq-description">
+            Starting something new comes with questions. Find clear,
+            straightforward answers about our training programs,
+            learning experience, and enrollment process.
           </p>
-          <a className="text-link" href="#contact">
-            Still have questions? Contact us <ArrowRight size={17} />
-          </a>
+
+          <div className="faq-contact-card">
+            <div className="faq-contact-icon">
+              <MessageCircle size={22} />
+            </div>
+
+            <div className="faq-contact-content">
+              <strong>Still have questions?</strong>
+              <p>We’re happy to help you figure things out.</p>
+
+              <a href="#apply" className="faq-contact-link">
+                Talk to our team
+                <ArrowRight size={17} />
+              </a>
+            </div>
+          </div>
+
+          <div className="faq-trust-note">
+            <CheckCircle2 size={17} />
+            <span>Clear guidance. Practical learning. Career-focused support.</span>
+          </div>
         </div>
 
-        <div className="faq-list">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
+        <div className="faq-content">
+          <div className="faq-content-heading">
+            <span>FREQUENTLY ASKED QUESTIONS</span>
+            <span className="faq-count">
+              {String(faqs.length).padStart(2, "0")} ANSWERS
+            </span>
+          </div>
 
-            return (
-              <article className="faq-item" key={faq.question}>
-                <button
-                  className="faq-question"
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() =>
-                    setOpenIndex(isOpen ? -1 : index)
-                  }
+          <div className="faq-list">
+            {faqs.map((faq, index) => {
+              const isOpen = openIndex === index;
+              const answerId = `faq-answer-${index}`;
+
+              return (
+                <article
+                  className={`faq-item ${isOpen ? "faq-item-open" : ""}`}
+                  key={faq.question}
                 >
-                  <span>{faq.question}</span>
-                  <ChevronDown
-                    size={19}
-                    className={isOpen ? "faq-chevron faq-chevron-open" : "faq-chevron"}
-                  />
-                </button>
+                  <button
+                    className="faq-question"
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={answerId}
+                    onClick={() =>
+                      setOpenIndex(isOpen ? -1 : index)
+                    }
+                  >
+                    <span className="faq-number">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
 
-                {isOpen && <p className="faq-answer">{faq.answer}</p>}
-              </article>
-            );
-          })}
+                    <span className="faq-question-text">
+                      {faq.question}
+                    </span>
+
+                    <span className="faq-toggle">
+                      <Plus
+                        size={19}
+                        className={isOpen ? "faq-plus-open" : ""}
+                      />
+                    </span>
+                  </button>
+
+                  <div
+                    className="faq-answer-wrapper"
+                    id={answerId}
+                    hidden={!isOpen}
+                  >
+                    <p className="faq-answer">{faq.answer}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="faq-bottom-note">
+            <Sparkles size={17} />
+            <span>Can’t find what you’re looking for? We’re just a message away.</span>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 const indianCities = [
   "Agartala", "Agra", "Ahmedabad", "Aizawl", "Ajmer", "Akola",

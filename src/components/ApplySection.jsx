@@ -147,6 +147,10 @@ function formatPrice(amount) {
   return `₹${amount.toLocaleString("en-IN")}`;
 }
 
+// Replace this placeholder with your verified UPI ID before publishing.
+const UPI_ID = "9931805808@ybl";
+const PAYEE_NAME = "Av_eSAFE Training";
+
 function ApplySection({
   indianCities = [],
   indianColleges = [],
@@ -186,6 +190,9 @@ function ApplySection({
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [paymentStep, setPaymentStep] = useState(false);
+  const [transactionReference, setTransactionReference] = useState("");
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
 
   const activeBundle = BUNDLES.find(
     (bundle) => bundle.id === selectedBundle
@@ -328,6 +335,9 @@ function ApplySection({
 
     setSubmitted(false);
     setErrorMessage("");
+    setPaymentStep(false);
+    setTransactionReference("");
+    setPaymentConfirmed(false);
   }
 
   async function handleSubmit(event) {
@@ -339,6 +349,30 @@ function ApplySection({
       setErrorMessage(
         "Please select at least one training course or bundle."
       );
+      return;
+    }
+
+    // First submit displays payment instructions; it does not send the application yet.
+    if (!paymentStep) {
+      if (UPI_ID === "REPLACE_WITH_YOUR_UPI_ID") {
+        setErrorMessage(
+          "The payment setup is incomplete. Please configure the UPI ID in ApplySection.jsx."
+        );
+        return;
+      }
+
+      setErrorMessage("");
+      setPaymentStep(true);
+      return;
+    }
+
+    if (!transactionReference.trim()) {
+      setErrorMessage("Please enter your UPI transaction reference (UTR).");
+      return;
+    }
+
+    if (!paymentConfirmed) {
+      setErrorMessage("Please confirm that you have completed the UPI payment.");
       return;
     }
 
@@ -377,6 +411,9 @@ function ApplySection({
               activeBundle ? bundleCodingTrack : "Not applicable",
             "Selected Courses": formData.track,
             "Total Course Price": formatPrice(totalPrice),
+            "Payment Method": "UPI QR",
+            "UPI Transaction Reference (UTR)": transactionReference.trim(),
+            "Payment Status": "Pending manual verification — verify in bank/UPI account before enrollment",
 
             "Current Status": formData.currentStatus,
             "Goals": formData.goals.trim() || "Not provided",
@@ -757,6 +794,156 @@ function ApplySection({
           opacity: .7;
         }
 
+        .upi-payment-panel {
+          margin: 22px 0;
+          padding: 22px;
+          border: 1px solid rgba(52, 120, 246, .24);
+          border-radius: 18px;
+          background: linear-gradient(145deg, rgba(52, 120, 246, .07), rgba(52, 120, 246, .025));
+        }
+
+        .upi-payment-heading {
+          margin: 0 0 6px;
+          font-size: 20px;
+          font-weight: 750;
+        }
+
+        .upi-payment-description {
+          margin: 0 0 18px;
+          font-size: 13px;
+          line-height: 1.65;
+          opacity: .78;
+        }
+
+        .upi-payment-layout {
+          display: grid;
+          grid-template-columns: minmax(180px, 230px) minmax(0, 1fr);
+          align-items: center;
+          gap: 22px;
+        }
+
+        .upi-qr-frame {
+          display: grid;
+          place-items: center;
+          padding: 12px;
+          background: #fff;
+          border: 1px solid rgba(128, 128, 128, .2);
+          border-radius: 14px;
+        }
+
+        .upi-qr-frame img {
+          display: block;
+          width: 100%;
+          max-width: 210px;
+          height: auto;
+          aspect-ratio: 1;
+          object-fit: contain;
+        }
+
+        .upi-payment-details {
+          min-width: 0;
+        }
+
+        .upi-payment-amount {
+          display: block;
+          margin-bottom: 8px;
+          color: var(--accent-color, #3478f6);
+          font-size: 28px;
+          font-weight: 800;
+        }
+
+        .upi-payment-detail {
+          margin: 6px 0;
+          font-size: 13px;
+          line-height: 1.5;
+          overflow-wrap: anywhere;
+        }
+
+        .upi-payment-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 12px;
+          padding: 11px 15px;
+          border: 0;
+          border-radius: 10px;
+          background: var(--accent-color, #3478f6);
+          color: #fff;
+          text-decoration: none;
+          font: inherit;
+          font-weight: 700;
+        }
+
+        .upi-payment-warning {
+          margin: 16px 0 0;
+          padding: 11px 12px;
+          border-radius: 10px;
+          background: rgba(245, 158, 11, .1);
+          font-size: 12px;
+          line-height: 1.6;
+        }
+
+        .upi-payment-confirmation {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          margin-top: 18px;
+          font-size: 13px;
+          line-height: 1.55;
+          cursor: pointer;
+        }
+
+        .upi-payment-confirmation input {
+          flex: 0 0 auto;
+          width: 17px;
+          height: 17px;
+          margin-top: 2px;
+          accent-color: var(--accent-color, #3478f6);
+        }
+
+        .upi-payment-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-top: 16px;
+        }
+
+        .upi-payment-back {
+          min-height: 44px;
+          padding: 10px 15px;
+          border: 1px solid rgba(128, 128, 128, .35);
+          border-radius: 10px;
+          background: transparent;
+          color: inherit;
+          font: inherit;
+          cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+          .upi-payment-panel {
+            padding: 16px;
+          }
+
+          .upi-payment-layout {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 16px;
+          }
+
+          .upi-qr-frame {
+            width: min(100%, 240px);
+            justify-self: center;
+          }
+
+          .upi-payment-details {
+            text-align: center;
+          }
+
+          .upi-payment-actions > * {
+            flex: 1 1 100%;
+          }
+        }
+
         @media (max-width: 600px) {
           .course-modal-overlay {
             padding: 8px;
@@ -895,12 +1082,19 @@ function ApplySection({
                   onSubmit={handleSubmit}
                 >
                   <div className="application-form-heading">
-                    <span>APPLICATION FORM</span>
-                    <h3>Let’s get to know you.</h3>
-                    <p>Fields marked * are required.</p>
+                    <span>{paymentStep ? "PAYMENT" : "APPLICATION FORM"}</span>
+                    <h3>{paymentStep ? "Complete your UPI payment." : "Let’s get to know you."}</h3>
+                    <p>
+                      {paymentStep
+                        ? "Scan the QR code, pay the exact amount, then enter your transaction reference below."
+                        : "Fields marked * are required."}
+                    </p>
                   </div>
 
-                  <div className="application-field-grid">
+                  <div
+                    className="application-field-grid"
+                    style={paymentStep ? { display: "none" } : undefined}
+                  >
                     <label className="application-field">
                       <span>Full name *</span>
                       <input
@@ -1106,6 +1300,91 @@ function ApplySection({
                     </label>
                   </div>
 
+                  {paymentStep && (
+                    <section className="upi-payment-panel" aria-labelledby="upi-payment-title">
+                      <h4 className="upi-payment-heading" id="upi-payment-title">
+                        Pay {formatPrice(totalPrice)} using UPI
+                      </h4>
+                      <p className="upi-payment-description">
+                        Scan this QR code with your UPI app. Before confirming payment, verify that the payee and amount shown in your app are correct.
+                      </p>
+
+                      <div className="upi-payment-layout">
+                        <div className="upi-qr-frame">
+                          <img
+                            src={`https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(
+                              `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${totalPrice.toFixed(2)}&cu=INR&tn=${encodeURIComponent("Av_eSAFE training")}`
+                            )}`}
+                            alt={`UPI payment QR code for ${formatPrice(totalPrice)}`}
+                            loading="eager"
+                          />
+                        </div>
+
+                        <div className="upi-payment-details">
+                          <span className="upi-payment-amount">{formatPrice(totalPrice)}</span>
+                          <p className="upi-payment-detail"><strong>Pay to:</strong> {PAYEE_NAME}</p>
+                          <p className="upi-payment-detail"><strong>UPI ID:</strong> {UPI_ID}</p>
+                          <a
+                            className="upi-payment-link"
+                            href={`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${totalPrice.toFixed(2)}&cu=INR&tn=${encodeURIComponent("Av_eSAFE training")}`}
+                          >
+                            Open UPI app <IndianRupee size={16} />
+                          </a>
+                        </div>
+                      </div>
+
+                      <p className="upi-payment-warning">
+                        Payment is not verified automatically. After paying, enter the UTR/reference number from your UPI app. Av_eSAFE will verify the transaction before confirming enrollment. Do not pay if the payee or amount is incorrect.
+                      </p>
+
+                      <label className="application-field" style={{ display: "block", marginTop: 18 }}>
+                        <span>UPI transaction reference / UTR *</span>
+                        <input
+                          type="text"
+                          name="transactionReference"
+                          placeholder="Enter the UTR shown in your UPI app"
+                          value={transactionReference}
+                          onChange={(event) => {
+                            setTransactionReference(event.target.value);
+                            setErrorMessage("");
+                          }}
+                          autoComplete="off"
+                          required={paymentStep}
+                          minLength={6}
+                        />
+                      </label>
+
+                      <label className="upi-payment-confirmation">
+                        <input
+                          type="checkbox"
+                          checked={paymentConfirmed}
+                          onChange={(event) => {
+                            setPaymentConfirmed(event.target.checked);
+                            setErrorMessage("");
+                          }}
+                          required={paymentStep}
+                        />
+                        <span>I have completed the payment and entered the transaction reference. I understand that my application remains pending until Av_eSAFE verifies the payment.</span>
+                      </label>
+
+                      <div className="upi-payment-actions">
+                        <button
+                          type="button"
+                          className="upi-payment-back"
+                          onClick={() => {
+                            setPaymentStep(false);
+                            setTransactionReference("");
+                            setPaymentConfirmed(false);
+                            setErrorMessage("");
+                          }}
+                          disabled={submitting}
+                        >
+                          Back to application
+                        </button>
+                      </div>
+                    </section>
+                  )}
+
                   {errorMessage && (
                     <p
                       className="application-error"
@@ -1123,7 +1402,9 @@ function ApplySection({
                   >
                     {submitting
                       ? "Submitting..."
-                      : "Submit application"}
+                      : paymentStep
+                        ? "Submit for payment verification"
+                        : "Continue to payment"}
 
                     {!submitting && <ArrowRight size={18} />}
                   </button>

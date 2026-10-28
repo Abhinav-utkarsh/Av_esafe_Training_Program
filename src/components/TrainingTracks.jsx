@@ -367,7 +367,7 @@ function TrainingTracks() {
               </span>
             </p>
 
-            <a href="#contact" className="training-tracks__cta">
+            <a href="#apply" className="training-tracks__cta">
               Register your interest
               <ArrowUpRight size={17} aria-hidden="true" />
             </a>

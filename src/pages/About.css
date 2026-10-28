@@ -1,21 +1,21 @@
 
 /* =====================================================
    AV_eSAFE TRAINING — ABOUT PAGE
-   Premium Blue-Violet Design
+   Premium Blue Design
    Navbar is controlled by the shared Navbar component.
 ===================================================== */
 
 .about-page {
-  --about-primary: #5145ee;
-  --about-primary-dark: #4035d2;
-  --about-violet: #7c3aed;
+  --about-primary: #3478f6;
+  --about-primary-dark: #2563eb;
+  --about-violet: #2563eb;
   --about-blue: #3478f6;
   --about-teal: #14b8a6;
   --about-ink: #172033;
   --about-navy: #142b4a;
   --about-muted: #687994;
   --about-border: #e7eaf3;
-  --about-soft: #f7f8ff;
+  --about-soft: #f3f7ff;
 
   position: relative;
   min-height: 100vh;
@@ -58,7 +58,7 @@
   background:
     radial-gradient(
       ellipse at 88% 24%,
-      rgba(99, 91, 255, 0.11),
+      rgba(52, 120, 246, 0.11),
       transparent 39%
     ),
     radial-gradient(
@@ -82,7 +82,7 @@
 .about-hero-glow-one {
   top: -140px;
   right: 8%;
-  background: rgba(124, 58, 237, 0.1);
+  background: rgba(37, 99, 235, 0.1);
 }
 
 .about-hero-glow-two {
@@ -96,9 +96,9 @@
   align-items: center;
   gap: 10px;
   padding: 10px 15px;
-  border: 1px solid rgba(81, 69, 238, 0.17);
+  border: 1px solid rgba(52, 120, 246, 0.17);
   border-radius: 999px;
-  background: rgba(245, 243, 255, 0.9);
+  background: rgba(239, 246, 255, 0.9);
   color: var(--about-primary);
   font-size: 11px;
   font-weight: 800;
@@ -111,7 +111,7 @@
   flex-shrink: 0;
   border-radius: 50%;
   background: var(--about-violet);
-  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
 .about-hero-title {
@@ -130,8 +130,8 @@
   color: var(--about-primary);
   background: linear-gradient(
     100deg,
-    #5145ee,
-    #7c3aed 55%,
+    #3478f6,
+    #2563eb 55%,
     #3478f6
   );
   -webkit-background-clip: text;
@@ -182,12 +182,12 @@
     var(--about-violet)
   );
   color: #fff;
-  box-shadow: 0 10px 25px rgba(81, 69, 238, 0.17);
+  box-shadow: 0 10px 25px rgba(52, 120, 246, 0.17);
 }
 
 .about-button-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 32px rgba(81, 69, 238, 0.24);
+  box-shadow: 0 16px 32px rgba(52, 120, 246, 0.24);
 }
 
 .about-button-primary svg {
@@ -206,8 +206,8 @@
 
 .about-button-secondary:hover {
   transform: translateY(-2px);
-  border-color: #c7c4ff;
-  background: #f8f7ff;
+  border-color: #b8d2ff;
+  background: #edf5ff;
 }
 
 .about-tagline {
@@ -286,7 +286,7 @@
 
 .about-purpose {
   padding: 90px 0 100px;
-  border-top: 1px solid #f0f0fa;
+  border-top: 1px solid #eaf1fb;
   background: #fff;
 }
 
@@ -314,10 +314,10 @@
   background:
     radial-gradient(
       circle at 100% 100%,
-      rgba(124, 58, 237, 0.11),
+      rgba(37, 99, 235, 0.11),
       transparent 44%
     ),
-    linear-gradient(145deg, #fbfaff, #fff);
+    linear-gradient(145deg, #f8fbff, #fff);
 }
 
 .about-vision-card {
@@ -338,9 +338,9 @@
   display: grid;
   place-items: center;
   margin-bottom: 24px;
-  border: 1px solid rgba(81, 69, 238, 0.12);
+  border: 1px solid rgba(52, 120, 246, 0.12);
   border-radius: 17px;
-  background: #efedff;
+  background: #eaf2ff;
   color: var(--about-primary);
 }
 
@@ -377,7 +377,7 @@
   position: absolute;
   right: -18px;
   bottom: -25px;
-  color: rgba(81, 69, 238, 0.075);
+  color: rgba(52, 120, 246, 0.075);
   pointer-events: none;
 }
 
@@ -428,10 +428,10 @@
     ),
     radial-gradient(
       ellipse at 95% 90%,
-      rgba(124, 58, 237, 0.07),
+      rgba(37, 99, 235, 0.07),
       transparent 35%
     ),
-    #f7f8ff;
+    #f3f7ff;
 }
 
 .about-journey-flow {
@@ -445,7 +445,7 @@
   position: relative;
   min-width: 0;
   padding: 23px 18px 25px;
-  border: 1px solid rgba(81, 69, 238, 0.1);
+  border: 1px solid rgba(52, 120, 246, 0.1);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 10px 28px rgba(23, 32, 51, 0.035);
@@ -457,7 +457,7 @@
 
 .about-journey-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(81, 69, 238, 0.28);
+  border-color: rgba(52, 120, 246, 0.28);
   box-shadow: 0 18px 38px rgba(23, 32, 51, 0.075);
 }
 
@@ -482,12 +482,12 @@
   display: grid;
   flex-shrink: 0;
   place-items: center;
-  border: 1px solid rgba(81, 69, 238, 0.12);
+  border: 1px solid rgba(52, 120, 246, 0.12);
   border-radius: 15px;
   background: linear-gradient(
     135deg,
-    #efedff,
-    #f2f7ff
+    #eaf2ff,
+    #edf5ff
   );
   color: var(--about-primary);
 }
@@ -514,8 +514,8 @@
   z-index: 2;
   padding: 3px;
   border-radius: 50%;
-  background: #f7f8ff;
-  color: #8c85ee;
+  background: #f3f7ff;
+  color: #6b9dfb;
 }
 
 .about-journey-summary {
@@ -571,7 +571,7 @@
 
 .about-benefit-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(81, 69, 238, 0.25);
+  border-color: rgba(52, 120, 246, 0.25);
   box-shadow: 0 18px 40px rgba(23, 32, 51, 0.075);
 }
 
@@ -588,12 +588,12 @@
   height: 51px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(81, 69, 238, 0.12);
+  border: 1px solid rgba(52, 120, 246, 0.12);
   border-radius: 16px;
   background: linear-gradient(
     135deg,
-    #efedff,
-    #f0f7ff
+    #eaf2ff,
+    #edf5ff
   );
   color: var(--about-primary);
 }
@@ -630,10 +630,10 @@
   background:
     radial-gradient(
       ellipse at 90% 10%,
-      rgba(124, 58, 237, 0.08),
+      rgba(37, 99, 235, 0.08),
       transparent 38%
     ),
-    #f7f8ff;
+    #f3f7ff;
 }
 
 .about-founder-card {
@@ -642,7 +642,7 @@
   align-items: center;
   gap: clamp(30px, 5vw, 65px);
   padding: 35px;
-  border: 1px solid rgba(81, 69, 238, 0.1);
+  border: 1px solid rgba(52, 120, 246, 0.1);
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.88);
   box-shadow: 0 20px 60px rgba(23, 32, 51, 0.055);
@@ -658,7 +658,7 @@
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 25%;
-  border: 1px solid rgba(81, 69, 238, 0.1);
+  border: 1px solid rgba(52, 120, 246, 0.1);
   border-radius: 22px;
   background: #edf0f7;
   box-shadow: 0 18px 45px rgba(23, 32, 51, 0.13);
@@ -731,10 +731,10 @@
 
 .about-founder-tags span {
   padding: 7px 10px;
-  border: 1px solid rgba(81, 69, 238, 0.12);
+  border: 1px solid rgba(52, 120, 246, 0.12);
   border-radius: 999px;
-  background: #f7f6ff;
-  color: #55506f;
+  background: #edf5ff;
+  color: #385477;
   font-size: 10px;
   font-weight: 650;
   line-height: 1.5;
@@ -777,7 +777,7 @@
   border-radius: 21px;
   background: linear-gradient(
     110deg,
-    #fafaff,
+    #f8fbff,
     #fff 70%
   );
 }
@@ -787,9 +787,9 @@
   height: 57px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(81, 69, 238, 0.12);
+  border: 1px solid rgba(52, 120, 246, 0.12);
   border-radius: 17px;
-  background: #efedff;
+  background: #eaf2ff;
   color: var(--about-primary);
 }
 
@@ -818,7 +818,7 @@
   border: 1px solid rgba(20, 184, 166, 0.22);
   border-radius: 12px;
   background: #f0fdfa;
-  color: #0f766e;
+  color: #2459a8;
   font-size: 11px;
   font-weight: 750;
   white-space: nowrap;
@@ -840,10 +840,10 @@
   background:
     radial-gradient(
       ellipse at 50% 0%,
-      rgba(221, 214, 254, 0.8),
+      rgba(219, 234, 254, 0.8),
       transparent 62%
     ),
-    linear-gradient(145deg, #f7f8ff, #f5f7ff);
+    linear-gradient(145deg, #f3f7ff, #f1f6ff);
   text-align: center;
 }
 
@@ -866,7 +866,7 @@
 .about-cta-orb-two {
   right: -90px;
   bottom: -100px;
-  background: rgba(124, 58, 237, 0.11);
+  background: rgba(37, 99, 235, 0.11);
 }
 
 .about-final-cta-content {
@@ -1212,7 +1212,7 @@
 ===================================================== */
 
 .about-page a:focus-visible {
-  outline: 3px solid rgba(81, 69, 238, 0.4);
+  outline: 3px solid rgba(52, 120, 246, 0.4);
   outline-offset: 4px;
 }
 

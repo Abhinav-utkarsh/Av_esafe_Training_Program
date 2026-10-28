@@ -112,7 +112,7 @@ export default function Navbar() {
 
           <Link
             className="button button-primary nav-cta"
-            to="/#apply"
+            to="#apply"
             onClick={closeMenu}
           >
             Apply now <ArrowUpRight size={16} />
